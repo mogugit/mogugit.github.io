@@ -100,4 +100,4 @@ theme: landscape
 deploy:
   type: git
   repo: git@github.com:mogugit/mogugit.github.io.git
-  branch: hexo
+  branch: master
