@@ -1,7 +1,7 @@
 ---
 title: First Blog
 date: 2020-05-27 17:44:06
-tags: blog
+tags: blog,learn
 ---
 
 利用 `github` 的二级域名搭建个人博客（默认已经拥有了`node`, `git`, `github`）等基础要求；
@@ -10,7 +10,7 @@ tags: blog
 
 构建新仓库注意 构建的这个博客仓库具有唯一性 所以名称格式为 username.github.io
 
-### 2、生成本地 ssh 
+### 2、生成本地 ssh
 
 ```git
     ssh-keygen -t rsa -C 'github账号'
@@ -19,7 +19,7 @@ tags: blog
 
 MAC 查看 SSH 信息命令如下：
 ```bash
-    cat ~/.ssh/id_rsa.pub 
+    cat ~/.ssh/id_rsa.pub
 ```
 返回以 `ssh-rsa` 开头的 ssh 秘钥
 
@@ -55,14 +55,14 @@ $ ssh -T git@github.com
     $ git config --global user.email youeremail@example.com
 ```
 
-### 6、执行命令 
+### 6、执行命令
 生成静态文件
 ```git
     hexo g  // 生成文件
 ```
 预览静态文件
 ```git
-    hexo s  // 预览静态文件 访问localhost:4000 
+    hexo s  // 预览静态文件 访问localhost:4000
 ```
 发布到远程仓库
 ```git
@@ -70,12 +70,12 @@ $ ssh -T git@github.com
 ```
 这一步默认会报错 提示没有git 错误： `Deployer not found: git`
 **解决办法：**
-```npm 
+```npm
     npm install hexo-deployer-git --save
 ```
 然后再次执行
 ```
-    hexo d 
+    hexo d
 ```
 即可发布到远程仓库
 最后可以通过 `yourname.github.io` 访问博客
