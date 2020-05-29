@@ -5,13 +5,17 @@
   
 
   
-  <title>如若初见</title>
+  <title>记录搭建github二级域名博客遇到的问题 | 如若初见</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="如若初见">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1.推送失败本地预览没有问题 Deployer not found: git**提示Deployer not found: git 原因1、没有安装插件 该插件可以将本地代码 build 之后提交到你指定的 github 仓库分支 1npm install hexo-deployer-git --save 原因2、本地的hexo主题的 _config.yml 文件配置有问题检查 deploy 字段">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录搭建github二级域名博客遇到的问题">
+<meta property="og:url" content="http://yoursite.com/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="如若初见">
+<meta property="og:description" content="1.推送失败本地预览没有问题 Deployer not found: git**提示Deployer not found: git 原因1、没有安装插件 该插件可以将本地代码 build 之后提交到你指定的 github 仓库分支 1npm install hexo-deployer-git --save 原因2、本地的hexo主题的 _config.yml 文件配置有问题检查 deploy 字段">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-29T05:57:03.322Z">
+<meta property="article:modified_time" content="2020-05-29T06:57:50.861Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -62,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-记录搭建github二级域名博客遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-记录搭建github二级域名博客遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
   <time datetime="2020-05-29T05:57:03.322Z" itemprop="datePublished">2020-05-29</time>
@@ -77,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">记录搭建github二级域名博客遇到的问题</a>
+    <h1 class="article-title" itemprop="name">
+      记录搭建github二级域名博客遇到的问题
     </h1>
   
 
@@ -145,77 +147,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-First-Blog" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/27/First-Blog/" class="article-date">
-  <time datetime="2020-05-27T09:44:06.000Z" itemprop="datePublished">2020-05-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/27/First-Blog/">First Blog</a>
-    </h1>
+    <a href="/2020/05/27/First-Blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">First Blog</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>利用 <code>github</code> 的二级域名搭建个人博客（默认已经拥有了<code>node</code>, <code>git</code>, <code>github</code>）等基础要求；</p>
-<h3 id="1、github-构建新仓库"><a href="#1、github-构建新仓库" class="headerlink" title="1、github 构建新仓库"></a>1、github 构建新仓库</h3><p>构建新仓库注意 构建的这个博客仓库具有唯一性 所以名称格式为 username.github.io</p>
-<h3 id="2、生成本地-ssh"><a href="#2、生成本地-ssh" class="headerlink" title="2、生成本地 ssh"></a>2、生成本地 ssh</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#39;github账号&#39;</span><br></pre></td></tr></table></figure>
-<p>生成的 ssh 信息 默认为 用户/当前账户/.ssh/id_rsa.pub 文件内 可以用记事本打开</p>
-<p>MAC 查看 SSH 信息命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>返回以 <code>ssh-rsa</code> 开头的 ssh 秘钥</p>
-<h3 id="3、生成-ssh-保存到-github"><a href="#3、生成-ssh-保存到-github" class="headerlink" title="3、生成 ssh 保存到 github"></a>3、生成 ssh 保存到 github</h3><p>右上角个人信息 -&gt; settings -&gt; SSH and GPG keys -&gt; new SSH key 填入上一步生成的 ssh 信息</p>
-<p>测试 ssh  和本地是否连通</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>回车 输入<code>yes</code><br>果看到Hi后面是你的用户名，就说明成功了</p>
-<h3 id="4、本地安装-hexo-主题"><a href="#4、本地安装-hexo-主题" class="headerlink" title="4、本地安装 hexo 主题"></a>4、本地安装 hexo 主题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
-<p>修改配置信息 打开 <code>_congfig.yml</code> 文件 修改 <code>deploy</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: git@github.com:username&#x2F;username.github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
-
-<h3 id="5、设置本地账户信息"><a href="#5、设置本地账户信息" class="headerlink" title="5、设置本地账户信息"></a>5、设置本地账户信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;yourname&quot;</span><br><span class="line">$ git config --global user.email youeremail@example.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="6、执行命令"><a href="#6、执行命令" class="headerlink" title="6、执行命令"></a>6、执行命令</h3><p>生成静态文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g  &#x2F;&#x2F; 生成文件</span><br></pre></td></tr></table></figure>
-<p>预览静态文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s  &#x2F;&#x2F; 预览静态文件 访问localhost:4000</span><br></pre></td></tr></table></figure>
-<p>发布到远程仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>这一步默认会报错 提示没有git 错误： <code>Deployer not found: git</code><br><strong>解决办法：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>然后再次执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>即可发布到远程仓库<br>最后可以通过 <code>yourname.github.io</code> 访问博客</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/27/First-Blog/" data-id="ckaruwj6h0000qgvo9pcdew7p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog-learn/" rel="tag">blog,learn</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
