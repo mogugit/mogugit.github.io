@@ -1,7 +1,7 @@
 ---
 title: 记录Hexo + Next 新增导航并添加文章
 date: 2020-06-01 17:43:00
-caregories:
+categories:
   - skill
 tags:
   - skill
@@ -13,7 +13,7 @@ tags:
   hexo new page '导航/菜单名称'
 ```
 执行之后 开启预览会有新建的菜单 `导航/菜单名称`
-
+<!-- more -->
 ## 2、修改主题菜单/导航配置
   1. 打开 `hexo/_config.yml` 文件，找到 `language:`，这行代码。例如我的语言是 `language: zh-CN` 。
   2. 打开文件 `hexo/themes/next/language`（`next`主题，打开你当前主题里的 `language` 文件夹）。那么我就打开 `language/zh-CN.yml`，与你的语言对应的文件。
