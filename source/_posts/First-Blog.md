@@ -9,7 +9,7 @@ tags: blog,learn
 ### 1、github 构建新仓库
 
 构建新仓库注意 构建的这个博客仓库具有唯一性 所以名称格式为 username.github.io
-
+<!-- more -->
 ### 2、生成本地 ssh
 
 ```git

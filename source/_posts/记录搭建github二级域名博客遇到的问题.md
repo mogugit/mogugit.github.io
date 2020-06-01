@@ -1,17 +1,20 @@
 ---
 title: 记录搭建github二级域名博客遇到的问题
+categories: read
 ---
+
 
 ## 1.推送失败本地预览没有问题 `Deployer not found: git`
 **提示`Deployer not found: git`**
 
 原因1、没有安装插件 该插件可以将本地代码 `build` 之后提交到你指定的 `github` 仓库分支
+
+<!-- more -->
 ```
   npm install hexo-deployer-git --save
 ```
 原因2、本地的hexo主题的 `_config.yml` 文件配置有问题
 检查 `deploy` 字段有没有 问题
-
 ## 2、`_config.yml` 文件配置  `deploy` 说明
 
   字段 `type` 提交工具 一般为 `git`
