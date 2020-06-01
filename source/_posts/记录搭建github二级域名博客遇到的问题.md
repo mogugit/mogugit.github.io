@@ -3,7 +3,7 @@ title: 记录搭建github二级域名博客遇到的问题
 ---
 
 ## 1.推送失败本地预览没有问题 `Deployer not found: git`
-**提示`Deployer not found: git`
+**提示`Deployer not found: git`**
 
 原因1、没有安装插件 该插件可以将本地代码 `build` 之后提交到你指定的 `github` 仓库分支
 ```
@@ -16,7 +16,7 @@ title: 记录搭建github二级域名博客遇到的问题
 
   字段 `type` 提交工具 一般为 `git`
   字段 `repo` 静态文件仓库地址 `git@github.com:仓库名/博客名字.github.io.git`
-  字段 `branch` 注意该字段 **该字段是指执行 `hexo d` 命令后文件最后推送到远程库的分支
+  字段 `branch` 注意该字段 **该字段是指执行 `hexo d` 命令后文件最后推送到远程库的分支**
 
   完整例子（`youranme` 为要替换自己的数据）：
   ```
@@ -28,7 +28,7 @@ title: 记录搭建github二级域名博客遇到的问题
 
 
 ## 3、如何解决在多台电脑上提交博客
-**解决办法：利用 `github` 的分支
+**解决办法：利用 `github` 的分支**
 github 新建分支 `newBranch` 并设置为默认分支
   (设置默认分支 当前代码库 -> setting -> Branchs -> Default branch 选择分支 -> 点击 Update)
 1、首先将本地远程库克隆到本地 (此时的本地仓库默认指向的是 `newBranch`)
