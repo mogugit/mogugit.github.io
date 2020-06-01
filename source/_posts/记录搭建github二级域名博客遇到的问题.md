@@ -1,6 +1,10 @@
 ---
 title: 记录搭建github二级域名博客遇到的问题
-categories: read
+categories:
+  - skill
+tags:
+  - probelm
+  - blog
 ---
 
 
