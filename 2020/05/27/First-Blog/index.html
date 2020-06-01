@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -17,23 +17,23 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"mogugit.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="利用 github 的二级域名搭建个人博客（默认已经拥有了node, git, github）等基础要求； 1、github 构建新仓库构建新仓库注意 构建的这个博客仓库具有唯一性 所以名称格式为 username.github.io 2、生成本地 ssh1ssh-keygen -t rsa -C &#39;github账号&#39; 生成的 ssh 信息 默认为 用户&#x2F;当前账户&#x2F;.ssh&#x2F;id_">
+  <meta name="description" content="利用 github 的二级域名搭建个人博客（默认已经拥有了node, git, github）等基础要求； 1、github 构建新仓库构建新仓库注意 构建的这个博客仓库具有唯一性 所以名称格式为 username.github.io">
 <meta property="og:type" content="article">
 <meta property="og:title" content="First Blog">
-<meta property="og:url" content="http://yoursite.com/2020/05/27/First-Blog/index.html">
+<meta property="og:url" content="https://mogugit.github.io/2020/05/27/First-Blog/index.html">
 <meta property="og:site_name" content="如若初见">
-<meta property="og:description" content="利用 github 的二级域名搭建个人博客（默认已经拥有了node, git, github）等基础要求； 1、github 构建新仓库构建新仓库注意 构建的这个博客仓库具有唯一性 所以名称格式为 username.github.io 2、生成本地 ssh1ssh-keygen -t rsa -C &#39;github账号&#39; 生成的 ssh 信息 默认为 用户&#x2F;当前账户&#x2F;.ssh&#x2F;id_">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="利用 github 的二级域名搭建个人博客（默认已经拥有了node, git, github）等基础要求； 1、github 构建新仓库构建新仓库注意 构建的这个博客仓库具有唯一性 所以名称格式为 username.github.io">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-27T09:44:06.000Z">
-<meta property="article:modified_time" content="2020-05-29T05:58:22.302Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2020-06-01T07:05:58.430Z">
+<meta property="article:author" content="mogugit">
 <meta property="article:tag" content="blog,learn">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/05/27/First-Blog/">
+<link rel="canonical" href="https://mogugit.github.io/2020/05/27/First-Blog/">
 
 
 <script id="page-configurations">
@@ -42,7 +42,7 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'en'
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -86,7 +86,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -115,12 +115,32 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-percetion">
+
+    <a href="/percetion/" rel="section"><i class="fa fa-republican fa-fw"></i>感悟</a>
+
+  </li>
+        <li class="menu-item menu-item-read">
+
+    <a href="/read/" rel="section"><i class="fa fa-book fa-fw"></i>技能</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
@@ -152,12 +172,12 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/27/First-Blog/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/05/27/First-Blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bgSelf.jpg">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="mogugit">
       <meta itemprop="description" content="">
     </span>
 
@@ -174,16 +194,16 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2020-05-27 17:44:06" itemprop="dateCreated datePublished" datetime="2020-05-27T17:44:06+08:00">2020-05-27</time>
+              <time title="创建时间：2020-05-27 17:44:06" itemprop="dateCreated datePublished" datetime="2020-05-27T17:44:06+08:00">2020-05-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-29 13:58:22" itemprop="dateModified" datetime="2020-05-29T13:58:22+08:00">2020-05-29</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-01 15:05:58" itemprop="dateModified" datetime="2020-06-01T15:05:58+08:00">2020-06-01</time>
               </span>
 
           
@@ -199,6 +219,7 @@
       
         <p>利用 <code>github</code> 的二级域名搭建个人博客（默认已经拥有了<code>node</code>, <code>git</code>, <code>github</code>）等基础要求；</p>
 <h3 id="1、github-构建新仓库"><a href="#1、github-构建新仓库" class="headerlink" title="1、github 构建新仓库"></a>1、github 构建新仓库</h3><p>构建新仓库注意 构建的这个博客仓库具有唯一性 所以名称格式为 username.github.io</p>
+<a id="more"></a>
 <h3 id="2、生成本地-ssh"><a href="#2、生成本地-ssh" class="headerlink" title="2、生成本地 ssh"></a>2、生成本地 ssh</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#39;github账号&#39;</span><br></pre></td></tr></table></figure>
 <p>生成的 ssh 信息 默认为 用户/当前账户/.ssh/id_rsa.pub 文件内 可以用记事本打开</p>
 <p>MAC 查看 SSH 信息命令如下：</p>
@@ -231,7 +252,40 @@
     
     
     
+      <div>
+          
+            
+<div class="my_post_copyright">
+<div style="text-align:center;color: #ccc;font-size:14px;">
+------ 版权信息 ------</div>
+ <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
 
+ <p><span>本文标题:</span><a href="/2020/05/27/First-Blog/">First Blog</a></p>
+ <p><span>文章作者:</span><a href="/" title="访问 mogugit 的个人博客">mogugit</a></p>
+ <p><span>发布时间:</span>2020年05月27日 - 17:44</p>
+ <p><span>最后更新:</span>2020年06月01日 - 15:05</p>
+ <p><span>原始链接:</span><a href="/2020/05/27/First-Blog/" title="First Blog">https://mogugit.github.io/2020/05/27/First-Blog/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://mogugit.github.io/2020/05/27/First-Blog/"  aria-label="复制成功！"></i></span>
+ </p>
+ <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+   var clipboard = new Clipboard('.fa-clipboard');
+   $(".fa-clipboard").click(function(){
+     clipboard.on('success', function(){
+       swal({
+         title: "",
+         text: '复制成功',
+         icon: "success",
+         showConfirmButton: true
+         });
+ 	 });
+   });
+</script>
+
+
+          
+      </div>
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/blog-learn/" rel="tag"># blog,learn</a>
@@ -296,10 +350,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -311,9 +365,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="John Doe"
+    <img class="site-author-image" itemprop="image" alt="mogugit"
       src="/images/bgSelf.jpg">
-  <p class="site-author-name" itemprop="name">John Doe</p>
+  <p class="site-author-name" itemprop="name">mogugit</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -322,12 +376,16 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -357,9 +415,9 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">mogugit</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         

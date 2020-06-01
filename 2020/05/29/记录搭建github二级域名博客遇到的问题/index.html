@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -17,22 +17,22 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"mogugit.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.推送失败本地预览没有问题 Deployer not found: git提示Deployer not found: git 原因1、没有安装插件 该插件可以将本地代码 build 之后提交到你指定的 github 仓库分支 1npm install hexo-deployer-git --save 原因2、本地的hexo主题的 _config.yml 文件配置有问题检查 deploy 字段有没">
+  <meta name="description" content="1.推送失败本地预览没有问题 Deployer not found: git提示Deployer not found: git 原因1、没有安装插件 该插件可以将本地代码 build 之后提交到你指定的 github 仓库分支">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记录搭建github二级域名博客遇到的问题">
-<meta property="og:url" content="http://yoursite.com/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://mogugit.github.io/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="如若初见">
-<meta property="og:description" content="1.推送失败本地预览没有问题 Deployer not found: git提示Deployer not found: git 原因1、没有安装插件 该插件可以将本地代码 build 之后提交到你指定的 github 仓库分支 1npm install hexo-deployer-git --save 原因2、本地的hexo主题的 _config.yml 文件配置有问题检查 deploy 字段有没">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="1.推送失败本地预览没有问题 Deployer not found: git提示Deployer not found: git 原因1、没有安装插件 该插件可以将本地代码 build 之后提交到你指定的 github 仓库分支">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-29T05:57:03.322Z">
-<meta property="article:modified_time" content="2020-06-01T01:55:30.768Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2020-06-01T07:19:44.595Z">
+<meta property="article:author" content="mogugit">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+<link rel="canonical" href="https://mogugit.github.io/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
 
 
 <script id="page-configurations">
@@ -41,7 +41,7 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'en'
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -85,7 +85,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,12 +114,32 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-percetion">
+
+    <a href="/percetion/" rel="section"><i class="fa fa-republican fa-fw"></i>感悟</a>
+
+  </li>
+        <li class="menu-item menu-item-read">
+
+    <a href="/read/" rel="section"><i class="fa fa-book fa-fw"></i>技能</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
   </ul>
@@ -151,12 +171,12 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/bgSelf.jpg">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="mogugit">
       <meta itemprop="description" content="">
     </span>
 
@@ -173,17 +193,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="Created: 2020-05-29 13:57:03" itemprop="dateCreated datePublished" datetime="2020-05-29T13:57:03+08:00">2020-05-29</time>
+              <time title="创建时间：2020-05-29 13:57:03" itemprop="dateCreated datePublished" datetime="2020-05-29T13:57:03+08:00">2020-05-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-01 09:55:30" itemprop="dateModified" datetime="2020-06-01T09:55:30+08:00">2020-06-01</time>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-01 15:19:44" itemprop="dateModified" datetime="2020-06-01T15:19:44+08:00">2020-06-01</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/read/" itemprop="url" rel="index"><span itemprop="name">read</span></a>
+                </span>
+            </span>
 
           
 
@@ -198,6 +227,7 @@
       
         <h2 id="1-推送失败本地预览没有问题-Deployer-not-found-git"><a href="#1-推送失败本地预览没有问题-Deployer-not-found-git" class="headerlink" title="1.推送失败本地预览没有问题 Deployer not found: git"></a>1.推送失败本地预览没有问题 <code>Deployer not found: git</code></h2><p><strong>提示<code>Deployer not found: git</code></strong></p>
 <p>原因1、没有安装插件 该插件可以将本地代码 <code>build</code> 之后提交到你指定的 <code>github</code> 仓库分支</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>原因2、本地的hexo主题的 <code>_config.yml</code> 文件配置有问题<br>检查 <code>deploy</code> 字段有没有 问题</p>
 <h2 id="2、-config-yml-文件配置-deploy-说明"><a href="#2、-config-yml-文件配置-deploy-说明" class="headerlink" title="2、_config.yml 文件配置  deploy 说明"></a>2、<code>_config.yml</code> 文件配置  <code>deploy</code> 说明</h2><p>  字段 <code>type</code> 提交工具 一般为 <code>git</code><br>  字段 <code>repo</code> 静态文件仓库地址 <code>git@github.com:仓库名/博客名字.github.io.git</code><br>  字段 <code>branch</code> 注意该字段 <strong>该字段是指执行 <code>hexo d</code> 命令后文件最后推送到远程库的分支</strong></p>
@@ -224,7 +254,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &#39;提交备注&#39;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 <p>9、发布到远程仓库<br>执行以下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
-<p>此时会将博客的静态文件推送到 <code>master</code> 分支，<br>同时访问 <a href="https://mogugit.github.io/" target="_blank" rel="noopener">https://mogugit.github.io/</a> 也就能看到更新的内容</p>
+<p>此时会将博客的静态文件推送到 <code>master</code> 分支，<br>同时访问 <a href="https://mogugit.github.io/">https://mogugit.github.io/</a> 也就能看到更新的内容</p>
 <p>10、更换电脑之后，只需要将远程仓库的分支克隆下来 在 <code>github</code> 中添加 <code>ssh</code> 就可以了<br>每次更新文件只需要执行 步骤 8,9 就好了</p>
 <p>如果代码提交错误 那就回滚代码；<br>首先通过 <code>git log</code> 获取相应的版本号</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
@@ -240,7 +270,40 @@
     
     
     
+      <div>
+          
+            
+<div class="my_post_copyright">
+<div style="text-align:center;color: #ccc;font-size:14px;">
+------ 版权信息 ------</div>
+ <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
 
+ <p><span>本文标题:</span><a href="/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">记录搭建github二级域名博客遇到的问题</a></p>
+ <p><span>文章作者:</span><a href="/" title="访问 mogugit 的个人博客">mogugit</a></p>
+ <p><span>发布时间:</span>2020年05月29日 - 13:57</p>
+ <p><span>最后更新:</span>2020年06月01日 - 15:19</p>
+ <p><span>原始链接:</span><a href="/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="记录搭建github二级域名博客遇到的问题">https://mogugit.github.io/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://mogugit.github.io/2020/05/29/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"  aria-label="复制成功！"></i></span>
+ </p>
+ <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+   var clipboard = new Clipboard('.fa-clipboard');
+   $(".fa-clipboard").click(function(){
+     clipboard.on('success', function(){
+       swal({
+         title: "",
+         text: '复制成功',
+         icon: "success",
+         showConfirmButton: true
+         });
+ 	 });
+   });
+</script>
+
+
+          
+      </div>
       <footer class="post-footer">
 
         
@@ -302,10 +365,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -317,9 +380,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="John Doe"
+    <img class="site-author-image" itemprop="image" alt="mogugit"
       src="/images/bgSelf.jpg">
-  <p class="site-author-name" itemprop="name">John Doe</p>
+  <p class="site-author-name" itemprop="name">mogugit</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -328,12 +391,16 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -363,9 +430,9 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">mogugit</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
