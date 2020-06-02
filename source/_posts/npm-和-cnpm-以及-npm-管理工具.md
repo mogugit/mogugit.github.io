@@ -48,7 +48,7 @@ tags:
 	npm install -g nrm
 ```
 安装成功之后使用 **nvm -V** 查看是否安装成功，
-如遇报错**1[请查看解决办法](https://blog.csdn.net/fly_wugui/article/details/104751159)**
+如遇报错**1[请查看解决办法](https://mogugit.github.io/2020/06/02/nrm-%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E6%96%87%E4%BB%B6-C-Program-Files-nodejs-nrm-ps1%EF%BC%8C%E5%9B%A0%E4%B8%BA%E5%9C%A8%E6%AD%A4%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC%E3%80%82/#more)**
 
 4-2、查看当前源列表
 执行命令
