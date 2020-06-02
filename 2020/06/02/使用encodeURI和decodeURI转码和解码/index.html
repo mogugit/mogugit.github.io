@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"mogugit.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="encodeURI() 函数可把字符串作为 URI 进行编码。 语法:encodeURI(URIstring)    参数 描述    URIstring 必需。一个字符串，含有 URI 或其他要编码的文本。">
+  <meta name="description" content="encodeURI() 函数可把字符串作为 URI 进行编码。 语法:encodeURI(URIstring)    参数 描述    URIstring 必需。一个字符串，含有 URI 或其他要编码的文本。   返回：URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。 说明该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用encodeURI和decodeURI转码和解码">
 <meta property="og:url" content="https://mogugit.github.io/2020/06/02/%E4%BD%BF%E7%94%A8encodeURI%E5%92%8CdecodeURI%E8%BD%AC%E7%A0%81%E5%92%8C%E8%A7%A3%E7%A0%81/index.html">
 <meta property="og:site_name" content="如若初见">
-<meta property="og:description" content="encodeURI() 函数可把字符串作为 URI 进行编码。 语法:encodeURI(URIstring)    参数 描述    URIstring 必需。一个字符串，含有 URI 或其他要编码的文本。">
+<meta property="og:description" content="encodeURI() 函数可把字符串作为 URI 进行编码。 语法:encodeURI(URIstring)    参数 描述    URIstring 必需。一个字符串，含有 URI 或其他要编码的文本。   返回：URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。 说明该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-02T10:00:49.000Z">
-<meta property="article:modified_time" content="2020-06-02T10:00:59.205Z">
+<meta property="article:published_time" content="2020-06-02T10:14:47.000Z">
+<meta property="article:modified_time" content="2020-06-02T10:16:45.258Z">
 <meta property="article:author" content="mogugit">
 <meta name="twitter:card" content="summary">
 
@@ -196,7 +196,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-06-02 18:00:49 / 修改时间：18:00:59" itemprop="dateCreated datePublished" datetime="2020-06-02T18:00:49+08:00">2020-06-02</time>
+              <time title="创建时间：2020-06-02 18:14:47 / 修改时间：18:16:45" itemprop="dateCreated datePublished" datetime="2020-06-02T18:14:47+08:00">2020-06-02</time>
             </span>
 
           
@@ -216,33 +216,22 @@
 <thead>
 <tr>
 <th>参数</th>
-<th align="center">描述</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>URIstring</td>
-<td align="center">必需。一个字符串，含有 URI 或其他要编码的文本。</td>
-</tr>
-<tr>
-<td><a id="more"></a></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td><strong>返回：</strong></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td>URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。</td>
-<td align="center"></td>
+<td>必需。一个字符串，含有 URI 或其他要编码的文本。</td>
 </tr>
 </tbody></table>
-<p><strong>说明</strong><br>该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ‘ ( ) 。</p>
-<p>该方法的目的是对 URI 进行完整的编码，因此对以下在 URI 中具有特殊含义的 ASCII 标点符号，encodeURI() 函数是不会进行转义的：;/?:@&amp;=+$,#  <strong>可以<a href="https://blog.csdn.net/qq_39712029/article/details/81003518" target="_blank" rel="noopener">使用encodeURIComponent()和decodeURIComponent()</a>来进行转义</strong></p>
+<p><strong>返回：</strong><br><code>URIstring</code> 的副本，其中的某些字符将被十六进制的转义序列进行替换。</p>
+<p><strong>说明</strong><br>该方法不会对 <code>ASCII</code> 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： <code>- _ . ! ~ * &#39; ( )</code> 。</p>
+<p>该方法的目的是对 <code>URI</code> 进行完整的编码，因此对以下在 <code>URI</code> 中具有特殊含义的 <code>ASCII</code> 标点符号，<code>encodeURI()</code> 函数是不会进行转义的：<code>;/?:@&amp;=+$,#</code><br><strong>可以<a href="https://blog.csdn.net/qq_39712029/article/details/81003518" target="_blank" rel="noopener">使用encodeURIComponent()和decodeURIComponent()</a>来进行转义</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D;&quot;张三&quot;;</span><br><span class="line"></span><br><span class="line">encodeURI(a)&#x2F;&#x2F; &quot;%E5%BC%A0%E4%B8%89&quot;</span><br></pre></td></tr></table></figure>
 
 <p><strong>decodeURI() 函数可对 encodeURI() 函数编码过的 URI 进行解码。</strong></p>
 <p><strong>语法</strong><br>decodeURI(URIstring)</p>
-<p><strong>描述</strong><br>| 参数 | 描述 |<br>| ————- |:————-:|<br>|URIstring |必需。一个字符串，含有 URI 或其他要解码的文本。|</p>
+<p><strong>描述</strong><br>| 参数 | 描述 |<br>| ————- | ————- |<br>|URIstring |必需。一个字符串，含有 URI 或其他要解码的文本。|</p>
 <p><strong>返回值</strong><br>URIstring 的副本，其中的十六进制转义序列将被它们表示的字符替换。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var b &#x3D; encodeURI(&quot;张三&quot;)；&#x2F;&#x2F;%E5%BC%A0%E4%B8%89</span><br><span class="line">decodeURI(b) &#x2F;&#x2F;张三</span><br></pre></td></tr></table></figure>
 
@@ -270,13 +259,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/02/%E8%8E%B7%E5%8F%96%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%86%E5%8F%A3%E5%AE%BD%E9%AB%98%E4%BB%A5%E5%8F%8A%E5%85%83%E7%B4%A0%E5%AE%BD%E9%AB%98/" rel="prev" title="获取浏览器视口宽高以及元素宽高">
-      <i class="fa fa-chevron-left"></i> 获取浏览器视口宽高以及元素宽高
+    <a href="/2020/06/02/commonjs%E4%BD%BF%E7%94%A8-%E8%8C%83%E4%BE%8B/" rel="prev" title="commonjs使用 范例">
+      <i class="fa fa-chevron-left"></i> commonjs使用 范例
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/02/js%E4%BC%98%E5%8C%96-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/" rel="next" title="js优化-事件委托">
-      js优化-事件委托 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
