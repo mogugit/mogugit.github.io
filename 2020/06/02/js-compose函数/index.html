@@ -20,15 +20,19 @@
     var CONFIG = {"hostname":"mogugit.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="如若初见">
-<meta property="og:url" content="https://mogugit.github.io/archives/2020/index.html">
+  <meta name="description" content="compose函数将函数扁平化处理 1234567891011121314function fn1(x)&amp;#123;	return x + 1;&amp;#125;function fn2(x)&amp;#123;	return x + 10;&amp;#125;function fn3(x)&amp;#123;	return x*10;&amp;#125;function fn4(x)&amp;#123;	return x&#x2F;10;&amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js-compose函数">
+<meta property="og:url" content="https://mogugit.github.io/2020/06/02/js-compose%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="如若初见">
+<meta property="og:description" content="compose函数将函数扁平化处理 1234567891011121314function fn1(x)&amp;#123;	return x + 1;&amp;#125;function fn2(x)&amp;#123;	return x + 10;&amp;#125;function fn3(x)&amp;#123;	return x*10;&amp;#125;function fn4(x)&amp;#123;	return x&#x2F;10;&amp;#125;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-02T05:19:43.000Z">
+<meta property="article:modified_time" content="2020-06-02T05:28:27.237Z">
 <meta property="article:author" content="mogugit">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://mogugit.github.io/archives/2020/">
+<link rel="canonical" href="https://mogugit.github.io/2020/06/02/js-compose%E5%87%BD%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -36,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | 如若初见</title>
+  <title>js-compose函数 | 如若初见</title>
   
 
 
@@ -161,234 +165,96 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 15 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/js-compose%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bgSelf.jpg">
+      <meta itemprop="name" content="mogugit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="如若初见">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js-compose函数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-02 13:19:43 / 修改时间：13:28:27" itemprop="dateCreated datePublished" datetime="2020-06-02T13:19:43+08:00">2020-06-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
+        <h4 id="compose函数"><a href="#compose函数" class="headerlink" title="compose函数"></a>compose函数</h4><p>将函数扁平化处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x + <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x*<span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn4</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x/<span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// fn1执行然后结果作为fn2参数 一直执行到fn4;</span></span><br><span class="line">fn4(fn3(fn2(fn1(<span class="number">5</span>)))) <span class="comment">// 16</span></span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T13:24:53+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/DOM-%E4%BA%8B%E4%BB%B6%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA/" itemprop="url">
-            <span itemprop="name">DOM 事件深入浅出</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T13:20:10+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/mouseover%E5%92%8Cmouseenter%E4%BB%A5%E5%8F%8Amouseout%E5%92%8Cmouseleave%E5%8C%BA%E5%88%AB/" itemprop="url">
-            <span itemprop="name">mouseover和mouseenter以及mouseout和mouseleave区别</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T13:19:43+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/js-compose%E5%87%BD%E6%95%B0/" itemprop="url">
-            <span itemprop="name">js-compose函数</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T13:19:15+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B/" itemprop="url">
-            <span itemprop="name">面试题-函数原型</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T13:18:41+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/%E9%9D%A2%E8%AF%95%E9%A2%98-js%E5%9F%BA%E7%A1%802/" itemprop="url">
-            <span itemprop="name">面试题-js基础2</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T13:18:07+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/%E9%9D%A2%E8%AF%95%E9%A2%98-js%E5%9F%BA%E7%A1%80/" itemprop="url">
-            <span itemprop="name">面试题-js基础</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T13:17:35+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/%E8%B0%88%E8%B0%88-Object-prototype-toString/" itemprop="url">
-            <span itemprop="name">谈谈 Object.prototype.toString</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T11:46:32+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA/" itemprop="url">
-            <span itemprop="name">判断一个对象是否为空</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T11:45:23+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/css-background%E5%B1%9E%E6%80%A7%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7%E5%86%99background-size-background-positon/" itemprop="url">
-            <span itemprop="name">css background属性合在一起写background-size background-positon</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-02T11:44:14+08:00"
-              content="2020-06-02">
-          06-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/06/02/%E4%B8%AA%E4%BA%BA%E4%B8%8A%E7%BD%91%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/" itemprop="url">
-            <span itemprop="name">个人上网工具搭建</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<a id="more"></a>
+<p>但是这么写太麻烦了 所以可以简化为这样 使用<a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/reduce" target="_blank" rel="noopener">reduce 函数</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funs</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">proxy</span>(<span class="params">...args</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">let</span> len = funs.length;</span><br><span class="line">		<span class="keyword">if</span>(len===<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> args;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(len === <span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> funs[<span class="number">0</span>](...args);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> funs.reduce(<span class="function">(<span class="params">x,y</span>)=&gt;</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">typeof</span> x === <span class="string">'function'</span> ? y(x(...args)) : y(x);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">compose()(<span class="number">5</span>); <span class="comment">// [5]</span></span><br><span class="line">compose(fn1,fn2,fn3,fn4)(<span class="number">5</span>) <span class="comment">// 16</span></span><br></pre></td></tr></table></figure>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+      <div>
+          
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+
+          
+      </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/02/%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B/" rel="prev" title="面试题-函数原型">
+      <i class="fa fa-chevron-left"></i> 面试题-函数原型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/02/mouseover%E5%92%8Cmouseenter%E4%BB%A5%E5%8F%8Amouseout%E5%92%8Cmouseleave%E5%8C%BA%E5%88%AB/" rel="next" title="mouseover和mouseenter以及mouseout和mouseleave区别">
+      mouseover和mouseenter以及mouseout和mouseleave区别 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
@@ -440,6 +306,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#compose函数"><span class="nav-number">1.</span> <span class="nav-text">compose函数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
