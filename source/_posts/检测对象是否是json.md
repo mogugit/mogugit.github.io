@@ -11,3 +11,5 @@ if(typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() 
 	alert('是JSON对象');
 }
 ```
+
+<!-- more -->
