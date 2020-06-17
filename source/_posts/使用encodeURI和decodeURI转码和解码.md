@@ -17,7 +17,7 @@ encodeURI(URIstring)
 
 **说明**
 该方法不会对 `ASCII` 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： `- _ . ! ~ * ' ( )` 。
-
+<!-- more -->
 该方法的目的是对 `URI` 进行完整的编码，因此对以下在 `URI` 中具有特殊含义的 `ASCII` 标点符号，`encodeURI()` 函数是不会进行转义的：`;/?:@&=+$,#`
 **可以[使用encodeURIComponent()和decodeURIComponent()](https://blog.csdn.net/qq_39712029/article/details/81003518)来进行转义**
 
