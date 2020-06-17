@@ -28,7 +28,7 @@
 <meta property="og:description" content="encodeURI() 函数可把字符串作为 URI 进行编码。 语法:encodeURI(URIstring)    参数 描述    URIstring 必需。一个字符串，含有 URI 或其他要编码的文本。   返回：URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。 说明该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-02T10:14:47.000Z">
-<meta property="article:modified_time" content="2020-06-02T10:16:45.258Z">
+<meta property="article:modified_time" content="2020-06-17T08:50:23.460Z">
 <meta property="article:author" content="mogugit">
 <meta name="twitter:card" content="summary">
 
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-06-02 18:14:47 / 修改时间：18:16:45" itemprop="dateCreated datePublished" datetime="2020-06-02T18:14:47+08:00">2020-06-02</time>
+              <time title="创建时间：2020-06-02 18:14:47" itemprop="dateCreated datePublished" datetime="2020-06-02T18:14:47+08:00">2020-06-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-17 16:50:23" itemprop="dateModified" datetime="2020-06-17T16:50:23+08:00">2020-06-17</time>
+              </span>
 
           
 
@@ -226,6 +232,7 @@
 </tbody></table>
 <p><strong>返回：</strong><br><code>URIstring</code> 的副本，其中的某些字符将被十六进制的转义序列进行替换。</p>
 <p><strong>说明</strong><br>该方法不会对 <code>ASCII</code> 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： <code>- _ . ! ~ * &#39; ( )</code> 。</p>
+<a id="more"></a>
 <p>该方法的目的是对 <code>URI</code> 进行完整的编码，因此对以下在 <code>URI</code> 中具有特殊含义的 <code>ASCII</code> 标点符号，<code>encodeURI()</code> 函数是不会进行转义的：<code>;/?:@&amp;=+$,#</code><br><strong>可以<a href="https://blog.csdn.net/qq_39712029/article/details/81003518" target="_blank" rel="noopener">使用encodeURIComponent()和decodeURIComponent()</a>来进行转义</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D;&quot;张三&quot;;</span><br><span class="line"></span><br><span class="line">encodeURI(a)&#x2F;&#x2F; &quot;%E5%BC%A0%E4%B8%89&quot;</span><br></pre></td></tr></table></figure>
 
@@ -262,7 +269,10 @@
     <a href="/2020/06/02/commonjs%E4%BD%BF%E7%94%A8-%E8%8C%83%E4%BE%8B/" rel="prev" title="commonjs使用 范例">
       <i class="fa fa-chevron-left"></i> commonjs使用 范例
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/17/%E5%88%A9%E7%94%A8-Qrcode-%E5%92%8C-canvas-%E7%BB%98%E5%88%B6%E5%B8%A6%E6%9C%89-icon-%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81/" rel="next" title="利用 Qrcode 和 canvas 绘制带有 icon 的二维码">
+      利用 Qrcode 和 canvas 绘制带有 icon 的二维码 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -336,7 +346,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -345,7 +355,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
