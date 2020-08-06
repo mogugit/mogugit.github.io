@@ -167,6 +167,73 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/JS-%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E6%95%B4%E6%95%B0%E5%92%8C%E5%B0%8F%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bgSelf.jpg">
+      <meta itemprop="name" content="mogugit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="如若初见">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/02/JS-%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E6%95%B4%E6%95%B0%E5%92%8C%E5%B0%8F%E6%95%B0/" class="post-title-link" itemprop="url">JS 正则匹配整数和小数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-02 15:01:03 / 修改时间：15:01:19" itemprop="dateCreated datePublished" datetime="2020-06-02T15:01:03+08:00">2020-06-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>正则匹配正整数和小数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> _check = <span class="regexp">/^([1-9][\d]&#123;0,6&#125;|0)(\.[\d]&#123;1,2&#125;)?$/</span>; <span class="comment">//限制小数点前后位数</span></span><br><span class="line"><span class="keyword">let</span> _check1 = <span class="regexp">/^([1-9][\d]*|0)(\.[\d]+)?$/</span>; <span class="comment">//不限制小数点前后位数</span></span><br><span class="line">_check.test(<span class="string">'0.10'</span>) <span class="comment">// true</span></span><br><span class="line">_check.test(<span class="string">'000.10'</span>) <span class="comment">// false</span></span><br><span class="line">_check.test(<span class="string">'0'</span>) <span class="comment">// true</span></span><br><span class="line">_check.test(<span class="string">'9'</span>) <span class="comment">// true</span></span><br><span class="line">_check.test(<span class="string">'9.9'</span>) <span class="comment">// true</span></span><br><span class="line">_check.test(<span class="string">'9.90'</span>) <span class="comment">// true</span></span><br><span class="line">_check.test(<span class="string">'9.900'</span>) <span class="comment">// false</span></span><br><span class="line">_check.test(<span class="string">'90'</span>)  <span class="comment">// true</span></span><br><span class="line">_check.test(<span class="string">'090'</span>)  <span class="comment">// false</span></span><br><span class="line">_check.test(<span class="string">'9..90'</span>)  <span class="comment">// false</span></span><br><span class="line">_check.test(<span class="string">'9.9.0'</span>) <span class="comment">// false</span></span><br><span class="line">_check.test(<span class="string">'009'</span>) <span class="comment">// false</span></span><br><span class="line">_check.test(<span class="string">'0009.90'</span>) <span class="comment">//false</span></span><br><span class="line">_check.test(<span class="string">'9000000'</span>)  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/02/JS-%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E6%95%B4%E6%95%B0%E5%92%8C%E5%B0%8F%E6%95%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8C%96%E4%B8%BAexcel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -763,72 +830,6 @@ rm.ps1，因为在此系统上禁止运行脚本。</a>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bgSelf.jpg">
-      <meta itemprop="name" content="mogugit">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="如若初见">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/02/%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B/" class="post-title-link" itemprop="url">面试题-函数原型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-06-02 13:19:15 / 修改时间：13:27:47" itemprop="dateCreated datePublished" datetime="2020-06-02T13:19:15+08:00">2020-06-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="关于原型函数的问题"><a href="#关于原型函数的问题" class="headerlink" title="关于原型函数的问题:"></a>关于原型函数的问题:</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">5</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.getName();</span><br><span class="line">getName();</span><br><span class="line">Foo().getName();</span><br><span class="line">getName();</span><br><span class="line"><span class="keyword">new</span> Foo.getName();</span><br><span class="line"><span class="keyword">new</span> Foo().getName();</span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> Foo().getName();</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/02/%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -900,7 +901,7 @@ rm.ps1，因为在此系统上禁止运行脚本。</a>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">62</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -909,7 +910,7 @@ rm.ps1，因为在此系统上禁止运行脚本。</a>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
