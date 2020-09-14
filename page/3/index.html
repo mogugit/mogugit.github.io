@@ -167,6 +167,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/npm-install%E5%87%BA%E7%8E%B0-Unexpected-end-of-JSON-input-while-parsing-near/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bgSelf.jpg">
+      <meta itemprop="name" content="mogugit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="如若初见">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/02/npm-install%E5%87%BA%E7%8E%B0-Unexpected-end-of-JSON-input-while-parsing-near/" class="post-title-link" itemprop="url">npm install出现: Unexpected end of JSON input while parsing near</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-02 17:14:54 / 修改时间：17:15:08" itemprop="dateCreated datePublished" datetime="2020-06-02T17:14:54+08:00">2020-06-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装node版本管理工具的时候 把node卸载了 然后重新安装了node版本 然后就出现了Unexpected end of JSON input while parsing near  网上各种查，，，，终于解决了<br>第一种情况是 最新版的Nodejs与npm版本不合适的问题（因为没更新Node之前是不会的）。<br>解决办法就是 把npm的版本降到4版。<br>在windows下使用cmd执行语句：<strong>npm -g i npm@4</strong>  或者安装6.x 版本；</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/02/npm-install%E5%87%BA%E7%8E%B0-Unexpected-end-of-JSON-input-while-parsing-near/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/%E4%BD%BF%E7%94%A8xlsx-full-min-js%E5%A4%84%E7%90%86excel%E8%A1%A8%E6%A0%BC%EF%BC%88%E4%B8%BB%E8%A6%81%E5%B0%86%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8C%96%E4%B8%BAexcel%E8%A1%A8%E5%B9%B6%E5%AE%9E%E7%8E%B0%E4%B8%8B%E8%BD%BD%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -761,74 +827,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/Clipboard-js-%E5%AE%9E%E7%8E%B0%E7%82%B9%E5%87%BB%E5%A4%8D%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bgSelf.jpg">
-      <meta itemprop="name" content="mogugit">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="如若初见">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/02/Clipboard-js-%E5%AE%9E%E7%8E%B0%E7%82%B9%E5%87%BB%E5%A4%8D%E5%88%B6/" class="post-title-link" itemprop="url">Clipboard.js 实现点击复制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-06-02 16:18:07 / 修改时间：16:19:43" itemprop="dateCreated datePublished" datetime="2020-06-02T16:18:07+08:00">2020-06-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在开发过程中难免会遇到点击分享的需求，这里有两种实现方式：<br><strong>第一种：</strong> 通过原生js 的方法用（<strong>存在兼容性</strong>）：</p>
-<p><strong>document.execCommand(</strong> aCommandName, aShowDefaultUI, aValueArgument<strong>)</strong><br>参数说明：<br>        <strong>aCommandName</strong><br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;命令的名称：常用的为”copy”,”cut”等；</p>
-<p>注：”copy”  拷贝当前选中内容到剪贴板</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/02/Clipboard-js-%E5%AE%9E%E7%8E%B0%E7%82%B9%E5%87%BB%E5%A4%8D%E5%88%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -900,7 +898,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -909,7 +907,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
