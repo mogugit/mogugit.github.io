@@ -66,6 +66,11 @@ github账户 -> setting -> SSH and GPG keys -> SSH keys -> New SSH key、
 6、将 hexo 当前目录下的文件 全部提交到远程库 `newBranch`
 
 7、本地预览
+新建博文
+```git
+  hexo new 'newBlogTitle'
+```
+
 生成静态文件
 ```git
     hexo g  // 生成文件
