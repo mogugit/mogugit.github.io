@@ -38,34 +38,34 @@ tags:
 **解决办法：利用 `github` 的分支**
 github 新建分支 `newBranch` 并设置为默认分支
   (设置默认分支 当前代码库 -> setting -> Branchs -> Default branch 选择分支 -> 点击 Update)
-1、首先将本地远程库克隆到本地 (此时的本地仓库默认指向的是 `newBranch`)
+####  1）、首先将本地远程库克隆到本地 (此时的本地仓库默认指向的是 `newBranch`)
 ```git
   git clone 仓库地址
 ```
 
-2、然后此时仓库有两个分支 `newBranch` 和 `master` ;
+####  2）、然后此时仓库有两个分支 `newBranch` 和 `master` ;
 在当前克隆下来的文件夹里面执行 (需要安装 `hexo`)
 ```hexo
   hexo init
 ```
-3、在新电脑上 生成 `ssh` ;
+####  3）、在新电脑上 生成 `ssh` ;
 ```git
     ssh-keygen -t rsa -C 'github账号'
 ```
 `ssh` 值在 `/用户/当前账户名/.ssh/id_rsa.pub` 的文件内
 
-4、将值新建到 `guhub` 的 `ssh keys`:
+####  4）、将值新建到 `guhub` 的 `ssh keys`:
 github账户 -> setting -> SSH and GPG keys -> SSH keys -> New SSH key、
 
-5、设置本地账户信息
+####  5）、设置本地账户信息
 ```git
     $ git config --global user.name "yourname"
     $ git config --global user.email youeremail@example.com
 ```
 
-6、将 hexo 当前目录下的文件 全部提交到远程库 `newBranch`
+## 6、将 hexo 当前目录下的文件 全部提交到远程库 `newBranch`
 
-7、本地预览
+#### 1）、本地预览
 新建博文
 ```git
   hexo new 'newBlogTitle'
@@ -80,13 +80,13 @@ github账户 -> setting -> SSH and GPG keys -> SSH keys -> New SSH key、
     hexo s  // 预览静态文件 访问localhost:4000
 ```
 
-8、将修改的文件提交的远程仓库
+#### 2）、将修改的文件提交的远程仓库
 ```git
   git add .
   git commit -m '提交备注'
   git push
 ```
-9、发布到远程仓库
+#### 3）、发布到远程仓库
 执行以下
 ```git
    hexo clean && hexo g && hexo d
@@ -94,7 +94,7 @@ github账户 -> setting -> SSH and GPG keys -> SSH keys -> New SSH key、
 此时会将博客的静态文件推送到 `master` 分支，
 同时访问 https://mogugit.github.io/ 也就能看到更新的内容
 
-10、更换电脑之后，只需要将远程仓库的分支克隆下来 在 `github` 中添加 `ssh` 就可以了
+## 7、更换电脑之后，只需要将远程仓库的分支克隆下来 在 `github` 中添加 `ssh` 就可以了
 每次更新文件只需要执行 步骤 8,9 就好了
 
 如果代码提交错误 那就回滚代码；
@@ -114,3 +114,23 @@ github账户 -> setting -> SSH and GPG keys -> SSH keys -> New SSH key、
 ```
   git pull
 ```
+## 8、[博客使用的图片可以使用免费的图床](https://zhuanlan.zhihu.com/p/35270383)
+
+**[路过图床](https://imgchr.com/)**
+
+  简介：支持免注册上传图片，永久存储，支持HTTPS加密访问和调用图片，提供多种图片链接格式，成立于2011年
+
+  限制：最大10M
+**[七牛云](https://portal.qiniu.com)**
+
+简介：注册认证后有10G永久免费空间，每月10G国内和10G国外流量，速度相当快，七牛云是国内专业CDN服务商，插件支持比较多，有免费ssl证书，但https流量收费
+**注意：七牛云30天后会回收测试域名，因此你`必须要绑定自己的已备案的域名`**
+
+图片上传限制：无
+
+**[公益图床](http://sbimg.cn)**
+
+长期保存需要注册使用，这个图床服务器在国内应该还用了cdn，总之速度非常快
+
+
+其他的可以[参考这里](https://zhuanlan.zhihu.com/p/35270383)
