@@ -4,6 +4,52 @@
   
     
     <entry>
+      <title>js - 回调函数的应用技巧之函数预处理</title>
+      <link href="2020/10/15/js-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7%E4%B9%8B%E5%87%BD%E6%95%B0%E9%A2%84%E5%A4%84%E7%90%86/"/>
+      <url>2020/10/15/js-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7%E4%B9%8B%E5%87%BD%E6%95%B0%E9%A2%84%E5%A4%84%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h4 id="回调函数的应用技巧之函数预处理"><a href="#回调函数的应用技巧之函数预处理" class="headerlink" title="回调函数的应用技巧之函数预处理"></a>回调函数的应用技巧之函数预处理</h4><p>函数前置</p><a id="more"></a><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前置函数 在当前函数执行前面增加一个函数实现再不更改原函数的情况下 对目标进行预处理;</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.before = <span class="function"><span class="keyword">function</span>(<span class="params">callBack</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>; <span class="comment">// 将 this 指向原函数；</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    callBack() <span class="comment">// 执行 前置函数</span></span><br><span class="line">    that.apply(that, <span class="built_in">arguments</span>) <span class="comment">// 执行原函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'原函数'</span>, data)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回调操作</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cb</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'callBack'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为原函数增加前置函数 before</span></span><br><span class="line"><span class="keyword">let</span> newFn = fn.before(cb)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行函数</span></span><br><span class="line">newFn(<span class="number">123</span>) <span class="comment">// '原函数 123'</span></span><br></pre></td></tr></table></figure><p><strong>应用场景：在不更改原函数的情况下对目标进行预处理</strong></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> js应用技巧 </tag>
+            
+            <tag> 函数回调应用 </tag>
+            
+            <tag> 前置函数 </tag>
+            
+            <tag> 函数预执行 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>js - 回调函数的应用技巧之计数执行</title>
+      <link href="2020/10/15/js-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7%E4%B9%8B%E8%AE%A1%E6%95%B0%E6%89%A7%E8%A1%8C/"/>
+      <url>2020/10/15/js-%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E7%9A%84%E5%BA%94%E7%94%A8%E6%8A%80%E5%B7%A7%E4%B9%8B%E8%AE%A1%E6%95%B0%E6%89%A7%E8%A1%8C/</url>
+      
+        <content type="html"><![CDATA[<p>在一些业务场景会有两个独立函数共同修改一个对象，而我们又不知道对象什么何时完成的时候，就要用回调函数来进行解决。</p><p>如：有两个单独文本文件，我们需要获取里面的内容来填充一个对象，我们在填充完成之后来获取对象。</p><p>获取文本文件并填充</p><a id="more"></a><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">acount, callBack</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">key, data</span>)</span>&#123;</span><br><span class="line">    obj[key] = data;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计数自减</span></span><br><span class="line">    <span class="keyword">if</span>(--acount == <span class="number">0</span>)&#123;</span><br><span class="line">      callBack(obj);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'未执行完毕'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'获取完毕'</span>, data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置目标次数以及回调函数；</span></span><br><span class="line"><span class="keyword">let</span> newFn = <span class="keyword">new</span> fn(<span class="number">2</span>, getData);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取数据1: 张三</span></span><br><span class="line">fs.readFile(<span class="string">'./1.text'</span>, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  newFn(<span class="string">'name'</span>, data);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取数据2: 18</span></span><br><span class="line">fs.readFile(<span class="string">'./2.text'</span>, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  newFn(<span class="string">'age'</span>, data);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>应用场景为 需要多次调用、异步执行，但是不知道结果是否符合的情况下，可以指定次数来解决问题；</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> js应用技巧 </tag>
+            
+            <tag> 函数回调应用 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>函数防抖与节流</title>
       <link href="2020/10/14/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/"/>
       <url>2020/10/14/%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E4%B8%8E%E8%8A%82%E6%B5%81/</url>
