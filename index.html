@@ -195,6 +195,73 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/10/29/%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%85%8B%E9%9A%86-%E6%8B%B7%E8%B4%9D-%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/bgSelf.jpg">
+      <meta itemprop="name" content="mogugit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="如若初见">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/29/%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%85%8B%E9%9A%86-%E6%8B%B7%E8%B4%9D-%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/" class="post-title-link" itemprop="url">实现深度克隆/拷贝,解决循环引用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-29 09:27:39 / 修改时间：09:29:06" itemprop="dateCreated datePublished" datetime="2020-10-29T09:27:39+08:00">2020-10-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>基础版(不能解决循环引用)</strong><br>基础版</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 如果参数为空则直接返回,如果为日期/正则 则也直接返回；</span></span><br><span class="line">  <span class="keyword">if</span>( obj == <span class="literal">null</span> ) <span class="keyword">return</span> obj;</span><br><span class="line">  <span class="keyword">if</span>( obj <span class="keyword">instanceof</span> <span class="built_in">Date</span> ) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(obj);</span><br><span class="line">  <span class="keyword">if</span>( obj <span class="keyword">instanceof</span> <span class="built_in">RegExp</span> ) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(obj);</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> obj !== <span class="string">'object'</span>) <span class="keyword">return</span> obj;</span><br><span class="line">  <span class="keyword">let</span> cloneObj = <span class="keyword">new</span> obj.constructor; <span class="comment">// 此时是为了获取 obj 的类型, 并且可以根据类型来新建相应的拷贝对象;</span></span><br><span class="line">  <span class="comment">// 根据上文的对象类型,来进行填充;</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">    <span class="keyword">if</span>(obj.hasOwnProperty(key))&#123; <span class="comment">// 过滤掉对象元属性上面的属性;</span></span><br><span class="line">      cloneObj[key] = deepClone(obj[key])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cloneObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/29/%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%BA%A6%E5%85%8B%E9%9A%86-%E6%8B%B7%E8%B4%9D-%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/10/15/JS-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E4%B8%8E%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -809,77 +876,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/22/%E8%BD%AC%EF%BC%9Ahttp%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A0%E9%87%8A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/bgSelf.jpg">
-      <meta itemprop="name" content="mogugit">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="如若初见">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/22/%E8%BD%AC%EF%BC%9Ahttp%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A0%E9%87%8A/" class="post-title-link" itemprop="url">转：http状态码诠释</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-06-22 16:18:02 / 修改时间：16:42:54" itemprop="dateCreated datePublished" datetime="2020-06-22T16:18:02+08:00">2020-06-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="一、http-状态码诠释"><a href="#一、http-状态码诠释" class="headerlink" title="一、http 状态码诠释"></a>一、http 状态码诠释</h4><p><a href="https://www.cnblogs.com/shanyou/archive/2012/05/06/2486134.html" target="_blank" rel="noopener">转自：HTTP协议状态码详解（HTTP Status Code）</a></p>
-<p>使用ASP.NET/PHP/JSP或者javascript都会用到http的不同状态，一些常见的状态码为：<br>200 – 服务器成功返回网页 404 – 请求的网页不存在 503 – 服务不可用<br><strong>1、1xx（临时响应）</strong><br>表示临时响应并需要请求者继续执行操作的状态代码。</p>
-<p>代码   说明</p>
-<ul>
-<li>100   （继续） 请求者应当继续提出请求。 服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。</li>
-<li>101   （切换协议） 请求者已要求服务器切换协议，服务器已确认并准备切换。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/22/%E8%BD%AC%EF%BC%9Ahttp%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A0%E9%87%8A/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -951,7 +947,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -960,7 +956,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
