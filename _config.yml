@@ -90,10 +90,14 @@ include:
 exclude:
 ignore:
 
+# Search
+search:
+  path: search.json
+  field: post
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: yelee
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
