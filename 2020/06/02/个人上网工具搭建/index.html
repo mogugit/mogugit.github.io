@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mogugit.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="ubantu 20.06 ss服务 两步走 1docker pull mritd&#x2F;shadowsocks 如果提示 docker 没有， 那么安装一下 1apt install docker.io">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人上网工具搭建">
+<meta property="og:url" content="https://mogugit.github.io/2020/06/02/%E4%B8%AA%E4%BA%BA%E4%B8%8A%E7%BD%91%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="如若初见">
+<meta property="og:description" content="ubantu 20.06 ss服务 两步走 1docker pull mritd&#x2F;shadowsocks 如果提示 docker 没有， 那么安装一下 1apt install docker.io">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191105203106272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZseV93dWd1aQ==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-06-02T03:44:14.000Z">
+<meta property="article:modified_time" content="2025-03-24T02:47:54.622Z">
+<meta property="article:author" content="mogugit">
+<meta property="article:tag" content="上网工具">
+<meta property="article:tag" content="translate">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191105203106272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZseV93dWd1aQ==,size_16,color_FFFFFF,t_70">
+
+<link rel="canonical" href="https://mogugit.github.io/2020/06/02/%E4%B8%AA%E4%BA%BA%E4%B8%8A%E7%BD%91%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>个人上网工具搭建 | 如若初见</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">如若初见</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/%E4%B8%AA%E4%BA%BA%E4%B8%8A%E7%BD%91%E5%B7%A5%E5%85%B7%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mogugit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="如若初见">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          个人上网工具搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-02 11:44:14" itemprop="dateCreated datePublished" datetime="2020-06-02T11:44:14+08:00">2020-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-24 10:47:54" itemprop="dateModified" datetime="2025-03-24T10:47:54+08:00">2025-03-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>ubantu 20.06 ss服务 两步走</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mritd/shadowsocks</span><br></pre></td></tr></table></figure>
+<p>如果提示 <code>docker</code> 没有， 那么安装一下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker.io</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -dt --name ss -p 16443:16443 mritd/shadowsocks -s "-s 0.0.0.0 -p 16443 -m aes-256-cfb -k test1231. --fast-open"</span><br></pre></td></tr></table></figure>
+<p>test1231.   -&gt;  password</p>
+<p>————————————–华丽丽的分割线————————————————-</p>
+<h2 id="服务器为centos-6"><a href="#服务器为centos-6" class="headerlink" title="==服务器为centos 6=="></a>==服务器为centos 6==</h2><h3 id="一、搭建ss"><a href="#一、搭建ss" class="headerlink" title="一、搭建ss"></a>一、搭建ss</h3><p>1、用xshell或者putty等工具远程登录服务器，要用root账户登录，运行以下命令(按顺序执行)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)yum install -y wget</span><br><span class="line">(2) wget –no-check-certificate -O shadowsocks.sh https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;teddysun&#x2F;shadowsocks_install&#x2F;master&#x2F;shadowsocks.sh</span><br><span class="line">(3) chmod +x shadowsocks.sh</span><br><span class="line">(4) .&#x2F;shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+<p>安装完成后，会提示你设置密码,端口,加密方式；</p>
+<p>会有如下提示</p>
+<blockquote>
+<p>Congratulations, Shadowsocks-python server install completed! Your Server IP :your_server_ip Your Server Port :your_server_port Your Password :your_password Your Encryption Method:your_encryption_method Welcome to visit:<a href="https://teddysun.com/342.html" target="_blank" rel="noopener">https://teddysun.com/342.html</a> Enjoy it!</p>
+</blockquote>
+<p>安装完成之后的查看配置信息 ：vi /etc/shadowsocks.json<br>展示如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	“server”:”<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>″,</span><br><span class="line">	“server_port”:<span class="number">8989</span>,</span><br><span class="line">	“local_address”:”<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>″,</span><br><span class="line">	“local_port”:<span class="number">1080</span>,</span><br><span class="line">	“password”:”yourpassword”,</span><br><span class="line">	“timeout”:<span class="number">300</span>,</span><br><span class="line">	“method”:”camellia-<span class="number">256</span>-cfb”,</span><br><span class="line">	“fast_open”:<span class="keyword">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常用命令：</p>
+<blockquote>
+<p>卸载：./shadowsocks.sh uninstall<br>启动：/etc/init.d/shadowsocks start<br>停止：/etc/init.d/shadowsocks stop<br>重启：/etc/init.d/shadowsocks restart<br>状态：/etc/init.d/shadowsocks status</p>
+</blockquote>
+<p>电脑上安装对应的shadowsocks客户端<br>(1)我的是win10系统，照例还是给个链接<br>     <a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">windows版本：https://github.com/shadowsocks/shadowsocks-windows/releases</a><br>     <a href="https://github.com/shadowsocks/shadowsocks-iOS/releases" target="_blank" rel="noopener">mac版本：https://github.com/shadowsocks/shadowsocks-iOS/releases</a><br>     <a href="https://github.com/shadowsocks/shadowsocks-android" target="_blank" rel="noopener">android版本：https://github.com/shadowsocks/shadowsocks-android</a><br>     (我用的是shadowsocks-arm64-v8a-4.6.1.apk这个版本，其他几个不行，不知道为什么)<br> (2)下载好后打开运行，电脑任务栏会有一个小飞机，双击，填写配置参数(vi /etc/shadowsocks.json  这个命令打印出来的信息);</p>
+<p>2、开放多端口，配置ss多用户 之前的ss配置文件内如大概如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"server"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">  <span class="string">"server_port"</span>: <span class="number">8989</span>,</span><br><span class="line">  <span class="string">"password"</span>: <span class="string">"password1"</span>,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"camellia-256-cfb"</span>,</span><br><span class="line">  <span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">  <span class="string">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">  <span class="string">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">  <span class="string">"fast_open"</span>:<span class="keyword">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们修改ss配置文件 vi /etc/shadowsocks.json</p>
+<blockquote>
+<p>IV ,IVM编辑 退出方法<br>:WQ   保存退出<br>:X<br>:Q    不保存退出<br>U撤销，ctrl+R 恢复。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"server"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="string">"port_password"</span>: &#123;</span><br><span class="line">        <span class="string">"8989"</span>:<span class="string">"password1"</span>,</span><br><span class="line">        <span class="string">"8888"</span>:<span class="string">"password2"</span>,</span><br><span class="line">        <span class="string">"9999"</span>:<span class="string">"password3"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"timeout"</span>: <span class="number">300</span>,</span><br><span class="line">    <span class="string">"method"</span>: <span class="string">"camellia-256-cfb"</span>,</span><br><span class="line">    <span class="string">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="string">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="string">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="string">"fast_open"</span>:<span class="keyword">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将此文件先备份到本地（以便ss客户端使用） 然后重新启动ss服务：<br>    (1) 备份</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;shadowsocks restart</span><br></pre></td></tr></table></figure>
+<p>这时增加的端口还不能使用，因为防火墙未开放新增的端口 开放端口的方法：<br>    1）打开防火墙配置文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;sysconfig&#x2F;iptables</span><br></pre></td></tr></table></figure>
+
+<p>2）加入以下两句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -p udp -m state --state NEW -m udp --dport 8888 -j ACCEPT</span><br><span class="line">-A INPUT -p tcp -m state --state NEW -m tcp --dport 8888 -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>3）重启防火墙使配置生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure>
+<p>现在可以尝试在客户端设置不同的端口，看看能不能fan墙了~</p>
+<h3 id="二、使用锐速提速"><a href="#二、使用锐速提速" class="headerlink" title="二、使用锐速提速"></a>二、使用锐速提速</h3><p>虽然现在可以访问google，看到墙外的世界了，但是，速度是有点慢。。<br>1、更换内核 一键更换内核脚本（<a href="https://my.vultr.com" target="_blank" rel="noopener">vultr</a>需先执行此脚本）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget –N —no–check–certificate https:&#x2F;&#x2F;freed.ga&#x2F;kernel&#x2F;ruisu.sh &amp;&amp; bash ruisu.sh</span><br></pre></td></tr></table></figure>
+<p>注意：脚本执行过程中，请勿进行任何操作。不要觉得它怎么就卡住了，这个过程可能有点长，待服务器重启后，本次连接将终端，重新ssh连接服务器安装锐速即可。</p>
+<p>2、执行锐速一键安装脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget –N —no–check–certificate https:&#x2F;&#x2F;github.com&#x2F;91yun&#x2F;serverspeeder&#x2F;raw&#x2F;master&#x2F;serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
+<p><strong><em>若提示：The name of network interface is not eth0, please retry after changing the name.<br>请使用备用脚本：<br>wget –N —no–check–certificate <a href="https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh</a> &amp;&amp; bash serverspeeder-all.sh</em></strong><br>若执行成功，将看到类似以下：<br><img src="https://img-blog.csdnimg.cn/20191105203106272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZseV93dWd1aQ==,size_16,color_FFFFFF,t_70" alt="执行命令成功"><br>下面是锐速常用的一些命令：</p>
+<blockquote>
+<p>启动：/serverspeeder/bin/serverSpeeder.sh start<br>停止：/serverspeeder/bin/serverSpeeder.sh stop<br>状态：service serverSpeeder status</p>
+</blockquote>
+<h2 id="Centos7的搭建教程"><a href="#Centos7的搭建教程" class="headerlink" title="==Centos7的搭建教程=="></a>==Centos7的搭建教程==</h2><h3 id="一、搭建ss服务"><a href="#一、搭建ss服务" class="headerlink" title="一、搭建ss服务"></a>一、搭建ss服务</h3><p>1) 下载安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks.sh https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;teddysun&#x2F;shadowsocks_install&#x2F;master&#x2F;shadowsocks.sh</span><br></pre></td></tr></table></figure>
+<p>2) 修改目录权限 赋可执行权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x shadowsocks.sh</span><br></pre></td></tr></table></figure>
+<p>3）运行程序，记录日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br></pre></td><td class="code"><pre><span class="line">#############################################################</span><br><span class="line"># One click Install Shadowsocks-Python server               #</span><br><span class="line"># Intro: https://teddysun.com/342.html                      #</span><br><span class="line"># Author: Teddysun &lt;i@teddysun.com&gt;                         #</span><br><span class="line"># Github: https://github.com/shadowsocks/shadowsocks        #</span><br><span class="line">#############################################################</span><br><span class="line"></span><br><span class="line">Please enter password <span class="keyword">for</span> shadowsocks-python</span><br><span class="line">(Default password: teddysun.com):xxx</span><br><span class="line"></span><br><span class="line">---------------------------</span><br><span class="line">password = xxx</span><br><span class="line">---------------------------</span><br><span class="line"></span><br><span class="line">Please enter a port <span class="keyword">for</span> shadowsocks-python [<span class="number">1</span>-<span class="number">65535</span>]</span><br><span class="line">(Default port: xxx):</span><br><span class="line"></span><br><span class="line">---------------------------</span><br><span class="line">port = xxx</span><br><span class="line">---------------------------</span><br><span class="line"></span><br><span class="line">Please select stream cipher <span class="keyword">for</span> shadowsocks-python:</span><br><span class="line"><span class="number">1</span>) aes-<span class="number">256</span>-gcm</span><br><span class="line"><span class="number">2</span>) aes-<span class="number">192</span>-gcm</span><br><span class="line"><span class="number">3</span>) aes-<span class="number">128</span>-gcm</span><br><span class="line"><span class="number">4</span>) aes-<span class="number">256</span>-ctr</span><br><span class="line"><span class="number">5</span>) aes-<span class="number">192</span>-ctr</span><br><span class="line"><span class="number">6</span>) aes-<span class="number">128</span>-ctr</span><br><span class="line"><span class="number">7</span>) aes-<span class="number">256</span>-cfb</span><br><span class="line"><span class="number">8</span>) aes-<span class="number">192</span>-cfb</span><br><span class="line"><span class="number">9</span>) aes-<span class="number">128</span>-cfb</span><br><span class="line"><span class="number">10</span>) camellia-<span class="number">128</span>-cfb</span><br><span class="line"><span class="number">11</span>) camellia-<span class="number">192</span>-cfb</span><br><span class="line"><span class="number">12</span>) camellia-<span class="number">256</span>-cfb</span><br><span class="line"><span class="number">13</span>) chacha20-ietf-poly1305</span><br><span class="line"><span class="number">14</span>) chacha20-ietf</span><br><span class="line"><span class="number">15</span>) chacha20</span><br><span class="line"><span class="number">16</span>) rc4-md5</span><br><span class="line">Which cipher you<span class="string">'d select(Default: aes-256-gcm):7</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">---------------------------</span></span><br><span class="line"><span class="string">cipher = aes-256-cfb</span></span><br><span class="line"><span class="string">---------------------------</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Press any key to start...or Press Ctrl+C to cancel</span></span><br><span class="line"><span class="string">Ign http://http.us.debian.org jessie InRelease</span></span><br><span class="line"><span class="string">Hit http://http.us.debian.org jessie-updates InRelease</span></span><br><span class="line"><span class="string">Hit http://http.us.debian.org jessie Release.gpg</span></span><br><span class="line"><span class="string">Hit http://http.us.debian.org jessie-updates/main Sources</span></span><br><span class="line"><span class="string">Get:1 http://http.us.debian.org jessie-updates/main amd64 Packages/DiffIndex [10.9 kB]</span></span><br><span class="line"><span class="string">Get:2 http://http.us.debian.org jessie-updates/main Translation-en/DiffIndex [3688 B]</span></span><br><span class="line"><span class="string">Hit http://http.us.debian.org jessie Release</span></span><br><span class="line"><span class="string">Hit http://http.us.debian.org jessie/main Sources</span></span><br><span class="line"><span class="string">Hit http://http.us.debian.org jessie/main amd64 Packages</span></span><br><span class="line"><span class="string">Hit http://http.us.debian.org jessie/main Translation-en</span></span><br><span class="line"><span class="string">Hit http://security.debian.org jessie/updates InRelease</span></span><br><span class="line"><span class="string">Hit http://security.debian.org jessie/updates/main Sources</span></span><br><span class="line"><span class="string">Hit http://security.debian.org jessie/updates/main amd64 Packages</span></span><br><span class="line"><span class="string">Hit http://security.debian.org jessie/updates/main Translation-en</span></span><br><span class="line"><span class="string">Fetched 14.5 kB in 4s (3370 B/s)</span></span><br><span class="line"><span class="string">Reading package lists...</span></span><br><span class="line"><span class="string">Reading package lists...</span></span><br><span class="line"><span class="string">Building dependency tree...</span></span><br><span class="line"><span class="string">Reading state information...</span></span><br><span class="line"><span class="string">autoconf is already the newest version.</span></span><br><span class="line"><span class="string">automake is already the newest version.</span></span><br><span class="line"><span class="string">gcc is already the newest version.</span></span><br><span class="line"><span class="string">libtool is already the newest version.</span></span><br><span class="line"><span class="string">make is already the newest version.</span></span><br><span class="line"><span class="string">python is already the newest version.</span></span><br><span class="line"><span class="string">python-dev is already the newest version.</span></span><br><span class="line"><span class="string">python-setuptools is already the newest version.</span></span><br><span class="line"><span class="string">unzip is already the newest version.</span></span><br><span class="line"><span class="string">wget is already the newest version.</span></span><br><span class="line"><span class="string">curl is already the newest version.</span></span><br><span class="line"><span class="string">libssl-dev is already the newest version.</span></span><br><span class="line"><span class="string">openssl is already the newest version.</span></span><br><span class="line"><span class="string">openssl set to manually installed.</span></span><br><span class="line"><span class="string">0 upgraded, 0 newly installed, 0 to remove and 8 not upgraded.</span></span><br><span class="line"><span class="string">converted '</span>https:<span class="comment">//github.com/jedisct1/libsodium/releases/download/1.0.16/libsodium-1.0.16.tar.gz' (ANSI_X3.4-1968) -&gt; 'https://github.com/jedisct1/libsodium/releases/download/1.0.16/libsodium-1.0.16.tar.gz' (UTF-8)</span></span><br><span class="line">--<span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">14</span>--  https:<span class="comment">//github.com/jedisct1/libsodium/releases/download/1.0.16/libsodium-1.0.16.tar.gz</span></span><br><span class="line">Resolving github.com (github.com)... <span class="number">13.250</span><span class="number">.177</span><span class="number">.223</span>, <span class="number">13.229</span><span class="number">.188</span><span class="number">.59</span>, <span class="number">52.74</span><span class="number">.223</span><span class="number">.119</span></span><br><span class="line">Connecting to github.com (github.com)|<span class="number">13.250</span><span class="number">.177</span><span class="number">.223</span>|:<span class="number">443</span>... connected.</span><br><span class="line">HTTP request sent, awaiting response... <span class="number">302</span> Found</span><br><span class="line">Location: https:<span class="comment">//github-production-release-asset-2e65be.s3.amazonaws.com/7710647/83a2fc2c-e01e-11e7-93d1-34e5a92f4011?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20180330%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20180330T080014Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=b1c25d7f46c71228586cd8d85265ba26f7f5d894b4bcf733fda382362a95fb4b&amp;X-Amz-SignedHeaders=host&amp;actor_id=0&amp;response-content-disposition=attachment%3B%20filename%3Dlibsodium-1.0.16.tar.gz&amp;response-content-type=application%2Foctet-stream [following]</span></span><br><span class="line">converted <span class="string">'https://github-production-release-asset-2e65be.s3.amazonaws.com/7710647/83a2fc2c-e01e-11e7-93d1-34e5a92f4011?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20180330%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20180330T080014Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=b1c25d7f46c71228586cd8d85265ba26f7f5d894b4bcf733fda382362a95fb4b&amp;X-Amz-SignedHeaders=host&amp;actor_id=0&amp;response-content-disposition=attachment%3B%20filename%3Dlibsodium-1.0.16.tar.gz&amp;response-content-type=application%2Foctet-stream'</span> (ANSI_X3<span class="number">.4</span>-<span class="number">1968</span>) -&gt; <span class="string">'https://github-production-release-asset-2e65be.s3.amazonaws.com/7710647/83a2fc2c-e01e-11e7-93d1-34e5a92f4011?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWNJYAX4CSVEH53A/20180330/us-east-1/s3/aws4_request&amp;X-Amz-Date=20180330T080014Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=b1c25d7f46c71228586cd8d85265ba26f7f5d894b4bcf733fda382362a95fb4b&amp;X-Amz-SignedHeaders=host&amp;actor_id=0&amp;response-content-disposition=attachment; filename=libsodium-1.0.16.tar.gz&amp;response-content-type=application/octet-stream'</span> (UTF-<span class="number">8</span>)</span><br><span class="line">--<span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">15</span>--  https:<span class="comment">//github-production-release-asset-2e65be.s3.amazonaws.com/7710647/83a2fc2c-e01e-11e7-93d1-34e5a92f4011?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWNJYAX4CSVEH53A/20180330/us-east-1/s3/aws4_request&amp;X-Amz-Date=20180330T080014Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=b1c25d7f46c71228586cd8d85265ba26f7f5d894b4bcf733fda382362a95fb4b&amp;X-Amz-SignedHeaders=host&amp;actor_id=0&amp;response-content-disposition=attachment;%20filename=libsodium-1.0.16.tar.gz&amp;response-content-type=application/octet-stream</span></span><br><span class="line">Resolving github-production-release-asset-<span class="number">2e65</span>be.s3.amazonaws.com (github-production-release-asset-<span class="number">2e65</span>be.s3.amazonaws.com)... <span class="number">52.216</span><span class="number">.227</span><span class="number">.8</span></span><br><span class="line">Connecting to github-production-release-asset-<span class="number">2e65</span>be.s3.amazonaws.com (github-production-release-asset-<span class="number">2e65</span>be.s3.amazonaws.com)|<span class="number">52.216</span><span class="number">.227</span><span class="number">.8</span>|:<span class="number">443</span>... connected.</span><br><span class="line">HTTP request sent, awaiting response... <span class="number">200</span> OK</span><br><span class="line">Length: <span class="number">1910835</span> (<span class="number">1.8</span>M) [application/octet-stream]</span><br><span class="line">Saving to: <span class="string">'libsodium-1.0.16.tar.gz'</span></span><br><span class="line"></span><br><span class="line">     <span class="number">0</span>K .......... .......... .......... .......... ..........  <span class="number">2</span>% <span class="number">41.2</span>K <span class="number">44</span>s</span><br><span class="line">    <span class="number">50</span>K .......... .......... .......... .......... ..........  <span class="number">5</span>% <span class="number">44.0</span>K <span class="number">42</span>s</span><br><span class="line">   <span class="number">100</span>K .......... .......... .......... .......... ..........  <span class="number">8</span>% <span class="number">70.9</span>K <span class="number">35</span>s</span><br><span class="line">   <span class="number">150</span>K .......... .......... .......... .......... .......... <span class="number">10</span>% <span class="number">67.3</span>K <span class="number">32</span>s</span><br><span class="line">   <span class="number">200</span>K .......... .......... .......... .......... .......... <span class="number">13</span>% <span class="number">70.9</span>K <span class="number">29</span>s</span><br><span class="line">   <span class="number">250</span>K .......... .......... .......... .......... .......... <span class="number">16</span>% <span class="number">75.0</span>K <span class="number">27</span>s</span><br><span class="line">   <span class="number">300</span>K .......... .......... .......... .......... .......... <span class="number">18</span>% <span class="number">70.9</span>K <span class="number">25</span>s</span><br><span class="line">   <span class="number">350</span>K .......... .......... .......... .......... .......... <span class="number">21</span>%  <span class="number">106</span>K <span class="number">23</span>s</span><br><span class="line">   <span class="number">400</span>K .......... .......... .......... .......... .......... <span class="number">24</span>%  <span class="number">106</span>K <span class="number">21</span>s</span><br><span class="line">   <span class="number">450</span>K .......... .......... .......... .......... .......... <span class="number">26</span>%  <span class="number">212</span>K <span class="number">19</span>s</span><br><span class="line">   <span class="number">500</span>K .......... .......... .......... .......... .......... <span class="number">29</span>%  <span class="number">184</span>K <span class="number">18</span>s</span><br><span class="line">   <span class="number">550</span>K .......... .......... .......... .......... .......... <span class="number">32</span>%  <span class="number">213</span>K <span class="number">16</span>s</span><br><span class="line">   <span class="number">600</span>K .......... .......... .......... .......... .......... <span class="number">34</span>%  <span class="number">213</span>K <span class="number">15</span>s</span><br><span class="line">   <span class="number">650</span>K .......... .......... .......... .......... .......... <span class="number">37</span>%  <span class="number">253</span>K <span class="number">13</span>s</span><br><span class="line">   <span class="number">700</span>K .......... .......... .......... .......... .......... <span class="number">40</span>%  <span class="number">214</span>K <span class="number">12</span>s</span><br><span class="line">   <span class="number">750</span>K .......... .......... .......... .......... .......... <span class="number">42</span>%  <span class="number">645</span>K <span class="number">11</span>s</span><br><span class="line">   <span class="number">800</span>K .......... .......... .......... .......... .......... <span class="number">45</span>%  <span class="number">313</span>K <span class="number">10</span>s</span><br><span class="line">   <span class="number">850</span>K .......... .......... .......... .......... .......... <span class="number">48</span>%  <span class="number">433</span>K <span class="number">9</span>s</span><br><span class="line">   <span class="number">900</span>K .......... .......... .......... .......... .......... <span class="number">50</span>%  <span class="number">419</span>K <span class="number">8</span>s</span><br><span class="line">   <span class="number">950</span>K .......... .......... .......... .......... .......... <span class="number">53</span>%  <span class="number">214</span>K <span class="number">8</span>s</span><br><span class="line">  <span class="number">1000</span>K .......... .......... .......... .......... .......... <span class="number">56</span>% <span class="number">15.8</span>M <span class="number">7</span>s</span><br><span class="line">  <span class="number">1050</span>K .......... .......... .......... .......... .......... <span class="number">58</span>%  <span class="number">216</span>K <span class="number">6</span>s</span><br><span class="line">  <span class="number">1100</span>K .......... .......... .......... .......... .......... <span class="number">61</span>% <span class="number">24.2</span>M <span class="number">6</span>s</span><br><span class="line">  <span class="number">1150</span>K .......... .......... .......... .......... .......... <span class="number">64</span>%  <span class="number">663</span>K <span class="number">5</span>s</span><br><span class="line">  <span class="number">1200</span>K .......... .......... .......... .......... .......... <span class="number">66</span>%  <span class="number">314</span>K <span class="number">5</span>s</span><br><span class="line">  <span class="number">1250</span>K .......... .......... .......... .......... .......... <span class="number">69</span>% <span class="number">1.32</span>M <span class="number">4</span>s</span><br><span class="line">  <span class="number">1300</span>K .......... .......... .......... .......... .......... <span class="number">72</span>%  <span class="number">255</span>K <span class="number">4</span>s</span><br><span class="line">  <span class="number">1350</span>K .......... .......... .......... .......... .......... <span class="number">75</span>% <span class="number">23.2</span>M <span class="number">3</span>s</span><br><span class="line">  <span class="number">1400</span>K .......... .......... .......... .......... .......... <span class="number">77</span>% <span class="number">1.33</span>M <span class="number">3</span>s</span><br><span class="line">  <span class="number">1450</span>K .......... .......... .......... .......... .......... <span class="number">80</span>%  <span class="number">253</span>K <span class="number">2</span>s</span><br><span class="line">  <span class="number">1500</span>K .......... .......... .......... .......... .......... <span class="number">83</span>% <span class="number">19.8</span>M <span class="number">2</span>s</span><br><span class="line">  <span class="number">1550</span>K .......... .......... .......... .......... .......... <span class="number">85</span>% <span class="number">1.36</span>M <span class="number">2</span>s</span><br><span class="line">  <span class="number">1600</span>K .......... .......... .......... .......... .......... <span class="number">88</span>%  <span class="number">255</span>K <span class="number">1</span>s</span><br><span class="line">  <span class="number">1650</span>K .......... .......... .......... .......... .......... <span class="number">91</span>% <span class="number">27.8</span>M <span class="number">1</span>s</span><br><span class="line">  <span class="number">1700</span>K .......... .......... .......... .......... .......... <span class="number">93</span>% <span class="number">1.36</span>M <span class="number">1</span>s</span><br><span class="line">  <span class="number">1750</span>K .......... .......... .......... .......... .......... <span class="number">96</span>% <span class="number">1.24</span>M <span class="number">0</span>s</span><br><span class="line">  <span class="number">1800</span>K .......... .......... .......... .......... .......... <span class="number">99</span>%  <span class="number">316</span>K <span class="number">0</span>s</span><br><span class="line">  <span class="number">1850</span>K .......... ......                                     <span class="number">100</span>% <span class="number">19.3</span>M=<span class="number">10</span>s</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">26</span> (<span class="number">180</span> KB/s) - <span class="string">'libsodium-1.0.16.tar.gz'</span> saved [<span class="number">1910835</span>/<span class="number">1910835</span>]</span><br><span class="line"></span><br><span class="line">converted <span class="string">'https://github.com/shadowsocks/shadowsocks/archive/master.zip'</span> (ANSI_X3<span class="number">.4</span>-<span class="number">1968</span>) -&gt; <span class="string">'https://github.com/shadowsocks/shadowsocks/archive/master.zip'</span> (UTF-<span class="number">8</span>)</span><br><span class="line">--<span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">26</span>--  https:<span class="comment">//github.com/shadowsocks/shadowsocks/archive/master.zip</span></span><br><span class="line">Resolving github.com (github.com)... <span class="number">13.229</span><span class="number">.188</span><span class="number">.59</span>, <span class="number">52.74</span><span class="number">.223</span><span class="number">.119</span>, <span class="number">13.250</span><span class="number">.177</span><span class="number">.223</span></span><br><span class="line">Connecting to github.com (github.com)|<span class="number">13.229</span><span class="number">.188</span><span class="number">.59</span>|:<span class="number">443</span>... connected.</span><br><span class="line">HTTP request sent, awaiting response... <span class="number">302</span> Found</span><br><span class="line">Location: https:<span class="comment">//codeload.github.com/shadowsocks/shadowsocks/zip/master [following]</span></span><br><span class="line">converted <span class="string">'https://codeload.github.com/shadowsocks/shadowsocks/zip/master'</span> (ANSI_X3<span class="number">.4</span>-<span class="number">1968</span>) -&gt; <span class="string">'https://codeload.github.com/shadowsocks/shadowsocks/zip/master'</span> (UTF-<span class="number">8</span>)</span><br><span class="line">--<span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">26</span>--  https:<span class="comment">//codeload.github.com/shadowsocks/shadowsocks/zip/master</span></span><br><span class="line">Resolving codeload.github.com (codeload.github.com)... <span class="number">13.250</span><span class="number">.162</span><span class="number">.133</span>, <span class="number">13.229</span><span class="number">.189</span><span class="number">.0</span>, <span class="number">54.251</span><span class="number">.140</span><span class="number">.56</span></span><br><span class="line">Connecting to codeload.github.com (codeload.github.com)|<span class="number">13.250</span><span class="number">.162</span><span class="number">.133</span>|:<span class="number">443</span>... connected.</span><br><span class="line">HTTP request sent, awaiting response... <span class="number">200</span> OK</span><br><span class="line">Length: <span class="number">114904</span> (<span class="number">112</span>K) [application/zip]</span><br><span class="line">Saving to: <span class="string">'shadowsocks-master.zip'</span></span><br><span class="line"></span><br><span class="line">     <span class="number">0</span>K .......... .......... .......... .......... .......... <span class="number">44</span>% <span class="number">7.12</span>M <span class="number">0</span>s</span><br><span class="line">    <span class="number">50</span>K .......... .......... .......... .......... .......... <span class="number">89</span>%  <span class="number">217</span>K <span class="number">0</span>s</span><br><span class="line">   <span class="number">100</span>K .......... ..                                         <span class="number">100</span>% <span class="number">17.6</span>M=<span class="number">0.2</span>s</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">27</span> (<span class="number">472</span> KB/s) - <span class="string">'shadowsocks-master.zip'</span> saved [<span class="number">114904</span>/<span class="number">114904</span>]</span><br><span class="line"></span><br><span class="line">converted <span class="string">'https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-debian'</span> (ANSI_X3<span class="number">.4</span>-<span class="number">1968</span>) -&gt; <span class="string">'https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-debian'</span> (UTF-<span class="number">8</span>)</span><br><span class="line">--<span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">27</span>--  https:<span class="comment">//raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-debian</span></span><br><span class="line">Resolving raw.githubusercontent.com (raw.githubusercontent.com)... <span class="number">151.101</span><span class="number">.8</span><span class="number">.133</span></span><br><span class="line">Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|<span class="number">151.101</span><span class="number">.8</span><span class="number">.133</span>|:<span class="number">443</span>... connected.</span><br><span class="line">HTTP request sent, awaiting response... <span class="number">200</span> OK</span><br><span class="line">Length: <span class="number">1938</span> (<span class="number">1.9</span>K) [text/plain]</span><br><span class="line">Saving to: <span class="string">'/etc/init.d/shadowsocks'</span></span><br><span class="line"></span><br><span class="line">     <span class="number">0</span>K .                                                     <span class="number">100</span>% <span class="number">9.74</span>M=<span class="number">0</span>s</span><br><span class="line"></span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">27</span> (<span class="number">9.74</span> MB/s) - <span class="string">'/etc/init.d/shadowsocks'</span> saved [<span class="number">1938</span>/<span class="number">1938</span>]</span><br><span class="line"></span><br><span class="line">running install</span><br><span class="line">running bdist_egg</span><br><span class="line">running egg_info</span><br><span class="line">creating shadowsocks.egg-info</span><br><span class="line">writing shadowsocks.egg-info/PKG-INFO</span><br><span class="line">writing top-level names to shadowsocks.egg-info/top_level.txt</span><br><span class="line">writing dependency_links to shadowsocks.egg-info/dependency_links.txt</span><br><span class="line">writing entry points to shadowsocks.egg-info/entry_points.txt</span><br><span class="line">writing manifest file <span class="string">'shadowsocks.egg-info/SOURCES.txt'</span></span><br><span class="line">reading manifest file <span class="string">'shadowsocks.egg-info/SOURCES.txt'</span></span><br><span class="line">reading manifest template <span class="string">'MANIFEST.in'</span></span><br><span class="line">writing manifest file <span class="string">'shadowsocks.egg-info/SOURCES.txt'</span></span><br><span class="line">installing library code to build/bdist.linux-x86_64/egg</span><br><span class="line">running install_lib</span><br><span class="line">running build_py</span><br><span class="line">creating build</span><br><span class="line">creating build/lib.linux-x86_64-<span class="number">2.7</span></span><br><span class="line">creating build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/lru_cache.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/udprelay.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/eventloop.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/common.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/shell.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/local.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/server.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/asyncdns.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/cryptor.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/manager.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/__init__.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/tcprelay.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/tunnel.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">copying shadowsocks/daemon.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks</span><br><span class="line">creating build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/openssl.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/aead.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/hkdf.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/__init__.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/rc4_md5.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/sodium.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/util.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/mbedtls.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">copying shadowsocks/crypto/table.py -&gt; build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto</span><br><span class="line">creating build/bdist.linux-x86_64</span><br><span class="line">creating build/bdist.linux-x86_64/egg</span><br><span class="line">creating build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/lru_cache.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/udprelay.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/eventloop.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/common.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/shell.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/local.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/server.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">creating build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/openssl.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/aead.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/hkdf.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/__init__.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/rc4_md5.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/sodium.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/util.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/mbedtls.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/crypto/table.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks/crypto</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/asyncdns.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/cryptor.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/manager.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/__init__.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/tcprelay.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/tunnel.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line">copying build/lib.linux-x86_64-<span class="number">2.7</span>/shadowsocks/daemon.py -&gt; build/bdist.linux-x86_64/egg/shadowsocks</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/lru_cache.py to lru_cache.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/udprelay.py to udprelay.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/eventloop.py to eventloop.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/common.py to common.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/shell.py to shell.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/local.py to local.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/server.py to server.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/openssl.py to openssl.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/aead.py to aead.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/hkdf.py to hkdf.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/__init__.py to __init__.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/rc4_md5.py to rc4_md5.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/sodium.py to sodium.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/util.py to util.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/mbedtls.py to mbedtls.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/crypto/table.py to table.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/asyncdns.py to asyncdns.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/cryptor.py to cryptor.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/manager.py to manager.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/__init__.py to __init__.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/tcprelay.py to tcprelay.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/tunnel.py to tunnel.pyc</span><br><span class="line"><span class="keyword">byte</span>-compiling build/bdist.linux-x86_64/egg/shadowsocks/daemon.py to daemon.pyc</span><br><span class="line">creating build/bdist.linux-x86_64/egg/EGG-INFO</span><br><span class="line">copying shadowsocks.egg-info/PKG-INFO -&gt; build/bdist.linux-x86_64/egg/EGG-INFO</span><br><span class="line">copying shadowsocks.egg-info/SOURCES.txt -&gt; build/bdist.linux-x86_64/egg/EGG-INFO</span><br><span class="line">copying shadowsocks.egg-info/dependency_links.txt -&gt; build/bdist.linux-x86_64/egg/EGG-INFO</span><br><span class="line">copying shadowsocks.egg-info/entry_points.txt -&gt; build/bdist.linux-x86_64/egg/EGG-INFO</span><br><span class="line">copying shadowsocks.egg-info/top_level.txt -&gt; build/bdist.linux-x86_64/egg/EGG-INFO</span><br><span class="line">zip_safe flag not set; analyzing archive contents...</span><br><span class="line">shadowsocks.tunnel: <span class="keyword">module</span> references __file__</span><br><span class="line">shadowsocks.shell: <span class="keyword">module</span> references __file__</span><br><span class="line">shadowsocks.server: <span class="keyword">module</span> references __file__</span><br><span class="line">shadowsocks.local: <span class="keyword">module</span> references __file__</span><br><span class="line">creating dist</span><br><span class="line">creating <span class="string">'dist/shadowsocks-3.0.0-py2.7.egg'</span> and adding <span class="string">'build/bdist.linux-x86_64/egg'</span> to it</span><br><span class="line">removing <span class="string">'build/bdist.linux-x86_64/egg'</span> (and everything under it)</span><br><span class="line">Processing shadowsocks-<span class="number">3.0</span><span class="number">.0</span>-py2<span class="number">.7</span>.egg</span><br><span class="line">removing <span class="string">'/usr/local/lib/python2.7/dist-packages/shadowsocks-3.0.0-py2.7.egg'</span> (and everything under it)</span><br><span class="line">creating /usr/local/lib/python2<span class="number">.7</span>/dist-packages/shadowsocks-<span class="number">3.0</span><span class="number">.0</span>-py2<span class="number">.7</span>.egg</span><br><span class="line">Extracting shadowsocks-<span class="number">3.0</span><span class="number">.0</span>-py2<span class="number">.7</span>.egg to /usr/local/lib/python2<span class="number">.7</span>/dist-packages</span><br><span class="line">shadowsocks <span class="number">3.0</span><span class="number">.0</span> is already the active version in easy-install.pth</span><br><span class="line">Installing sslocal script to /usr/local/bin</span><br><span class="line">Installing ssserver script to /usr/local/bin</span><br><span class="line"></span><br><span class="line">Installed /usr/local/lib/python2<span class="number">.7</span>/dist-packages/shadowsocks-<span class="number">3.0</span><span class="number">.0</span>-py2<span class="number">.7</span>.egg</span><br><span class="line">Processing dependencies <span class="keyword">for</span> shadowsocks==<span class="number">3.0</span><span class="number">.0</span></span><br><span class="line">Finished processing dependencies <span class="keyword">for</span> shadowsocks==<span class="number">3.0</span><span class="number">.0</span></span><br><span class="line">writing list of installed files to <span class="string">'/usr/local/shadowsocks_install.log'</span></span><br><span class="line">INFO: loading config from /etc/shadowsocks.json</span><br><span class="line"><span class="number">2018</span>-<span class="number">03</span>-<span class="number">30</span> <span class="number">08</span>:<span class="number">00</span>:<span class="number">27</span> INFO     loading libcrypto from libcrypto.so<span class="number">.1</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">Starting Shadowsocks success</span><br><span class="line"></span><br><span class="line">Congratulations, Shadowsocks-python server install completed!</span><br><span class="line">Your Server IP        :  xxx.xxx.xxx.xxx</span><br><span class="line">Your Server Port      :  xxx</span><br><span class="line">Your Password         :  xxx</span><br><span class="line">Your Encryption Method:  aes-<span class="number">256</span>-cfb</span><br><span class="line"></span><br><span class="line">Welcome to visit:https:<span class="comment">//teddysun.com/342.html</span></span><br><span class="line">Enjoy it!</span><br></pre></td></tr></table></figure>
+<p>2、启动ss</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c &#x2F;etc&#x2F;shadowsocks.json -d start</span><br></pre></td></tr></table></figure>
+<p>停止ss服务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c &#x2F;etc&#x2F;shadowsocks.json -d stop</span><br></pre></td></tr></table></figure>
+<p>3、配置多用户，增加端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同Centos 6</span><br></pre></td></tr></table></figure>
+<p>4、开放防火墙端口<br>新增加的端口防火墙是没有开放的，需要手动开放</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;firewalld&#x2F;zones&#x2F;public.xml</span><br></pre></td></tr></table></figure>
+<p>将端口8888的两行配置复制一下到下面，将其修改为9999。以开放9999端口的TCP和UDP访问功能。 配置完成后需要重启SS和刷新防火墙配置，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;shadowsocks restart</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>最后本机ss客户端填写配置信息，然后尝试访问谷歌，测试一下每个端口是否都可用，如果都可用，说明配置正确。</p>
+<h3 id="二、搭建锐速"><a href="#二、搭建锐速" class="headerlink" title="二、搭建锐速"></a>二、搭建锐速</h3><p>1、对于centos7，内核更换为： 3.10.0-229.1.2.el7.x86_64</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http:&#x2F;&#x2F;soft.91yun.org&#x2F;ISO&#x2F;Linux&#x2F;CentOS&#x2F;kernel&#x2F;kernel-3.10.0-229.1.2.el7.x86_64.rpm --force</span><br></pre></td></tr></table></figure>
+<p>2、更换内核后重启服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reboot</span><br></pre></td></tr></table></figure>
+<p>3、安装锐速，这里我们仍然使用一键脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;91yun&#x2F;serverspeeder&#x2F;master&#x2F;serverspeeder-all.sh &amp;&amp; bash serverspeeder-all.sh</span><br></pre></td></tr></table></figure>
+<p>4、启动锐速</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service serverSpeeder start</span><br></pre></td></tr></table></figure>
+<p>至此就搭建完啦，试着打开youtube看看1080p的视频吧，速度是不是挺给力？如果是，那么恭喜你，搭建成功了！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%8A%E7%BD%91%E5%B7%A5%E5%85%B7/" rel="tag"># 上网工具</a>
+              <a href="/tags/translate/" rel="tag"># translate</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/02/%E6%A3%80%E6%B5%8B%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E6%98%AFjson/" rel="prev" title="检测对象是否是json">
+      <i class="fa fa-chevron-left"></i> 检测对象是否是json
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/02/css-background%E5%B1%9E%E6%80%A7%E5%90%88%E5%9C%A8%E4%B8%80%E8%B5%B7%E5%86%99background-size-background-positon/" rel="next" title="css background属性合在一起写background-size background-positon">
+      css background属性合在一起写background-size background-positon <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器为centos-6"><span class="nav-number">1.</span> <span class="nav-text">&#x3D;&#x3D;服务器为centos 6&#x3D;&#x3D;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、搭建ss"><span class="nav-number">1.1.</span> <span class="nav-text">一、搭建ss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用锐速提速"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用锐速提速</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Centos7的搭建教程"><span class="nav-number">2.</span> <span class="nav-text">&#x3D;&#x3D;Centos7的搭建教程&#x3D;&#x3D;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、搭建ss服务"><span class="nav-number">2.1.</span> <span class="nav-text">一、搭建ss服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、搭建锐速"><span class="nav-number">2.2.</span> <span class="nav-text">二、搭建锐速</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mogugit</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mogugit</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

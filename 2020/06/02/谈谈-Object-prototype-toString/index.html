@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mogugit.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="ECMAScript 5在ECMAScript 5中，Object.prototype.toString()被调用时，会进行如下步骤：  如果 this 是 undefined ，返回 object Undefined ； 如果 this是 null ， 返回 object Null ； 令 O 为以 this 作为参数调用 ToObject的结果； 令 class 为 O 的内部属性 [[Cla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈 Object.prototype.toString">
+<meta property="og:url" content="https://mogugit.github.io/2020/06/02/%E8%B0%88%E8%B0%88-Object-prototype-toString/index.html">
+<meta property="og:site_name" content="如若初见">
+<meta property="og:description" content="ECMAScript 5在ECMAScript 5中，Object.prototype.toString()被调用时，会进行如下步骤：  如果 this 是 undefined ，返回 object Undefined ； 如果 this是 null ， 返回 object Null ； 令 O 为以 this 作为参数调用 ToObject的结果； 令 class 为 O 的内部属性 [[Cla">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-02T05:17:35.000Z">
+<meta property="article:modified_time" content="2025-03-24T02:47:54.631Z">
+<meta property="article:author" content="mogugit">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://mogugit.github.io/2020/06/02/%E8%B0%88%E8%B0%88-Object-prototype-toString/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>谈谈 Object.prototype.toString | 如若初见</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">如若初见</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2020/06/02/%E8%B0%88%E8%B0%88-Object-prototype-toString/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mogugit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="如若初见">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          谈谈 Object.prototype.toString
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-02 13:17:35" itemprop="dateCreated datePublished" datetime="2020-06-02T13:17:35+08:00">2020-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-24 10:47:54" itemprop="dateModified" datetime="2025-03-24T10:47:54+08:00">2025-03-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="ECMAScript-5"><a href="#ECMAScript-5" class="headerlink" title="ECMAScript 5"></a>ECMAScript 5</h4><p>在ECMAScript 5中，Object.prototype.toString()被调用时，会进行如下步骤：</p>
+<ul>
+<li>如果 <code>this</code> 是 <code>undefined</code> ，返回 <code>object Undefined</code> ；</li>
+<li>如果 <code>this</code>是 <code>null</code> ， 返回 <code>object Null</code> ；</li>
+<li>令 <code>O</code> 为以 <code>this</code> 作为参数调用 <code>ToObject</code>的结果；</li>
+<li>令 <code>class</code> 为 <code>O</code> 的内部属性 <code>[[Class]]</code> 的值；</li>
+<li>返回三个字符串 “[<code>object&quot;</code>, <code>class</code>, 以及<code>&quot;]&quot;</code> 拼接而成的字符串。<h4 id="Class"><a href="#Class" class="headerlink" title="[[Class]]"></a>[[Class]]</h4><code>[[Class]]</code> 是一个内部属性，值为一个类型字符串，可以用来判断值的类型。</li>
+</ul>
+<a id="more"></a>
+<p>有这么一段详细的解释：</p>
+<blockquote>
+<p>本规范的每种内置对象都定义了 [[Class]] 内部属性的值。宿主对象的 [[Class]] 内部属性的值可以是除了 “Arguments”, “Array”, “Boolean”, “Date”, “Error”, “Function”, “JSON”, “Math”, “Number”, “Object”, “RegExp”, “String” 的任何字符串。[[Class]] 内部属性的值用于内部区分对象的种类。注，本规范中除了通过 Object.prototype.toString ( 见 15.2.4.2) 没有提供任何手段使程序访问此值。</p>
+</blockquote>
+<p>在JavaScript代码里，唯一可以访问该属性的方法就是通过 <code>Object.prototype.toString</code> ，通常方法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(value)</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>)</span><br><span class="line"><span class="comment">// =&gt; '[object Null]'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>)</span><br><span class="line"><span class="comment">// =&gt; '[object Undefined]'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">Math</span>)</span><br><span class="line"><span class="comment">// =&gt; '[object Math]'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;)</span><br><span class="line"><span class="comment">// =&gt; '[object Object]'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call([])</span><br><span class="line"><span class="comment">// =&gt; '[object Array]'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">0</span>)</span><br><span class="line"><span class="comment">// =&gt; '[object Number]'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">NaN</span>)</span><br><span class="line"><span class="comment">// =&gt; '[object Number]'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">''</span>)</span><br><span class="line"><span class="comment">// =&gt; '[object String]'</span></span><br></pre></td></tr></table></figure>
+<p>因此，可以用下列函数，来获取任意变量的<code>[[Class]]</code>属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> _str = <span class="built_in">Object</span>.prototype.toString.call(val)</span><br><span class="line">  <span class="keyword">return</span> <span class="regexp">/^\[object (.*)\]$/</span>.exec(_str)[<span class="number">1</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">getClass(<span class="literal">null</span>)</span><br><span class="line"><span class="comment">// =&gt; 'Null'</span></span><br><span class="line"></span><br><span class="line">getClass(<span class="literal">undefined</span>)</span><br><span class="line"><span class="comment">// =&gt; 'Undefined'</span></span><br><span class="line"></span><br><span class="line">getClass(<span class="built_in">Math</span>)</span><br><span class="line"><span class="comment">// =&gt; 'Math'</span></span><br><span class="line"></span><br><span class="line">getClass(&#123;&#125;)</span><br><span class="line"><span class="comment">// =&gt; 'Object'</span></span><br><span class="line"></span><br><span class="line">getClass([])</span><br><span class="line"><span class="comment">// =&gt; 'Array'</span></span><br></pre></td></tr></table></figure>
+<h4 id="ECMAScript-6"><a href="#ECMAScript-6" class="headerlink" title="ECMAScript 6"></a>ECMAScript 6</h4><p>在ES6，调用 <code>Object.prototype.toString</code> 时，会进行如下步骤：</p>
+<ul>
+<li>如果 <code>this</code> 是 <code>undefined</code> ，返回 <code>&#39;[object Undefined]&#39;</code>;</li>
+<li>如果 <code>this</code> 是 <code>null</code> , 返回 <code>&#39;[object Null]&#39;</code> ；</li>
+<li>令 <code>O</code> 为以 <code>this</code> 作为参数调用 <code>ToObject</code> 的结果；</li>
+<li>令 <code>isArray</code> 为 <code>IsArray(O)</code> ；</li>
+<li><code>ReturnIfAbrupt(isArray)</code> （如果 <code>isArray</code> 不是一个正常值，比如抛出一个错误，中断执行）；</li>
+<li>如果 <code>isArray</code> 为 <code>true</code> ， 令 <code>builtinTag</code> 为 <code>&#39;Array&#39;</code> ;</li>
+<li><code>else</code> ，如果 <code>O is an exotic String object</code> ， 令 <code>builtinTag</code> 为 <code>&#39;String&#39;</code> ；</li>
+<li><code>else</code> ，如果 <code>O</code> 含有 <code>[[ParameterMap]] internal slo</code>, ， 令 <code>builtinTag 为 &#39;Arguments&#39;</code> ；</li>
+<li><code>else</code> ，如果 <code>O</code> 含有 <code>[[Call]] internal method</code> ， 令 <code>builtinTag</code> 为 <code>Function</code> ；</li>
+<li><code>else</code> ，如果 <code>O</code> 含有 <code>[[ErrorData]] internal slot</code> ， 令 <code>builtinTag 为</code>Error` ；</li>
+<li><code>else</code> ，如果 <code>O</code> 含有 <code>[[BooleanData]] internal slot</code> ， 令 <code>builtinTag</code> 为 <code>Boolean</code> ；</li>
+<li><code>else</code> ，如果 <code>O</code> 含有 <code>[[NumberData]] internal slot</code> ， 令 <code>builtinTag</code> 为 <code>Number</code> ；</li>
+<li><code>else</code> ，如果 <code>O</code> 含有 <code>[[DateValue]] internal slot</code> ， 令 <code>builtinTag 为 Date</code> ；</li>
+<li><code>else</code> ，如果 <code>O</code> 含有 <code>[[RegExpMatcher]] internal slot</code> ， 令 <code>builtinTag</code> 为 <code>RegExp</code> ；</li>
+<li><code>else</code> ， 令 <code>builtinTag</code> 为 <code>Object</code> ；</li>
+<li>令 <code>tag</code> 为 <code>Get(O, @@toStringTag)</code> 的返回值（ <code>Get(O, @@toStringTag</code>) 方法，既是在 <code>O</code> 是一个对象，并且具有 <code>@@toStringTag</code> 属性时，返回 <code>O[Symbol.toStringTag]</code> ）；</li>
+<li><code>ReturnIfAbrupt(tag)</code> ，如果 <code>tag</code> 是正常值，继续执行下一步；</li>
+<li>如果 <code>Type(tag)</code>不是一个字符串，<code>let tag be builtinTag</code> ；</li>
+<li>返回由三个字符串 <code>&quot;[object&quot;, tag, and &quot;]&quot;</code> 拼接而成的一个字符串。</li>
+</ul>
+<p>在ES6里，之前的<code>[[Class]]</code> 不再使用，取而代之的是一系列的 <code>internal slot</code> ，有一个比较完整的解释：</p>
+<blockquote>
+<p>Internal slots correspond to internal state that is associated with objects and used by various ECMAScript specification algorithms. Internal slots are not object properties and they are not inherited. Depending upon the specific internal slot specification, such state may consist of values of any ECMAScript language type or of specific ECMAScript specification type values</p>
+</blockquote>
+<p>大概的意思是：Internal slots 对应于与对象相关联并由各种ECMAScript规范算法使用的内部状态，它们没有对象属性，也不能被继承，根据具体的 Internal slot 规范，这种状态可以由任何ECMAScript语言类型或特定ECMAScript规范类型值的值组成。</p>
+<p>此外，通过对 Object.prototype.toString 在ES6的实现步骤分析，我们其实可以很容易改变 Object.prototype.toString.call 的结果，像下面一样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="built_in">Symbol</span>.toStringTag, &#123;</span><br><span class="line">    <span class="keyword">get</span>: function() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"newClass"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(obj)) <span class="comment">// "[object newClass]"</span></span><br></pre></td></tr></table></figure>
+<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p>1) <a href="http://www.ecma-international.org/ecma-262/5.1" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/5.1</a><br>2) <a href="http://www.adobe.com/devnet/archive/html5/articles/categorizing-values-in-javascript.html" target="_blank" rel="noopener">http://www.adobe.com/devnet/archive/html5/articles/categorizing-values-in-javascript.html</a><br>3) <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString</a><br>4) <a href="http://www.ecma-international.org/ecma-262/6.0/" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/6.0/</a><br>5) <a href="http://es6.ruanyifeng.com/#docs/symbol" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/symbol</a><br>6) <a href="https://tc39.github.io/ecma262/#sec-object.prototype.tostring" target="_blank" rel="noopener">https://tc39.github.io/ecma262/#sec-object.prototype.tostring</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/02/%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA/" rel="prev" title="判断一个对象是否为空">
+      <i class="fa fa-chevron-left"></i> 判断一个对象是否为空
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/02/%E9%9D%A2%E8%AF%95%E9%A2%98-js%E5%9F%BA%E7%A1%80/" rel="next" title="面试题-js基础">
+      面试题-js基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ECMAScript-5"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript 5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class"><span class="nav-number">2.</span> <span class="nav-text">[[Class]]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ECMAScript-6"><span class="nav-number">3.</span> <span class="nav-text">ECMAScript 6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考："><span class="nav-number">4.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mogugit</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mogugit</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mogugit.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1.推送失败本地预览没有问题 Deployer not found: git提示Deployer not found: git 原因1、没有安装插件 该插件可以将本地代码 build 之后提交到你指定的 github 仓库分支">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录搭建github二级域名博客遇到的问题">
+<meta property="og:url" content="https://mogugit.github.io/2025/03/24/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="如若初见">
+<meta property="og:description" content="1.推送失败本地预览没有问题 Deployer not found: git提示Deployer not found: git 原因1、没有安装插件 该插件可以将本地代码 build 之后提交到你指定的 github 仓库分支">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-24T02:47:54.627Z">
+<meta property="article:modified_time" content="2025-03-24T02:47:54.627Z">
+<meta property="article:author" content="mogugit">
+<meta property="article:tag" content="probelm">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://mogugit.github.io/2025/03/24/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>记录搭建github二级域名博客遇到的问题 | 如若初见</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">如若初见</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://mogugit.github.io/2025/03/24/%E8%AE%B0%E5%BD%95%E6%90%AD%E5%BB%BAgithub%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D%E5%8D%9A%E5%AE%A2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mogugit">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="如若初见">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          记录搭建github二级域名博客遇到的问题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-03-24 10:47:54" itemprop="dateCreated datePublished" datetime="2025-03-24T10:47:54+08:00">2025-03-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skill/" itemprop="url" rel="index"><span itemprop="name">skill</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-推送失败本地预览没有问题-Deployer-not-found-git"><a href="#1-推送失败本地预览没有问题-Deployer-not-found-git" class="headerlink" title="1.推送失败本地预览没有问题 Deployer not found: git"></a>1.推送失败本地预览没有问题 <code>Deployer not found: git</code></h2><p><strong>提示<code>Deployer not found: git</code></strong></p>
+<p>原因1、没有安装插件 该插件可以将本地代码 <code>build</code> 之后提交到你指定的 <code>github</code> 仓库分支</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>原因2、本地的hexo主题的 <code>_config.yml</code> 文件配置有问题<br>检查 <code>deploy</code> 字段有没有 问题</p>
+<h2 id="2、-config-yml-文件配置-deploy-说明"><a href="#2、-config-yml-文件配置-deploy-说明" class="headerlink" title="2、_config.yml 文件配置  deploy 说明"></a>2、<code>_config.yml</code> 文件配置  <code>deploy</code> 说明</h2><p>  字段 <code>type</code> 提交工具 一般为 <code>git</code><br>  字段 <code>repo</code> 静态文件仓库地址 <code>git@github.com:仓库名/博客名字.github.io.git</code><br>  字段 <code>branch</code> 注意该字段 <strong>该字段是指执行 <code>hexo d</code> 命令后文件最后推送到远程库的分支</strong></p>
+<p>  完整例子（<code>youranme</code> 为要替换自己的数据）：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:youranme&#x2F;youranme.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<h2 id="3、如何解决在多台电脑上提交博客"><a href="#3、如何解决在多台电脑上提交博客" class="headerlink" title="3、如何解决在多台电脑上提交博客"></a>3、如何解决在多台电脑上提交博客</h2><p><strong>解决办法：利用 <code>github</code> 的分支</strong><br>github 新建分支 <code>newBranch</code> 并设置为默认分支<br>  (设置默认分支 当前代码库 -&gt; setting -&gt; Branchs -&gt; Default branch 选择分支 -&gt; 点击 Update)</p>
+<h4 id="1）、首先将本地远程库克隆到本地-此时的本地仓库默认指向的是-newBranch"><a href="#1）、首先将本地远程库克隆到本地-此时的本地仓库默认指向的是-newBranch" class="headerlink" title="1）、首先将本地远程库克隆到本地 (此时的本地仓库默认指向的是 newBranch)"></a>1）、首先将本地远程库克隆到本地 (此时的本地仓库默认指向的是 <code>newBranch</code>)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 仓库地址</span><br></pre></td></tr></table></figure>
+
+<h4 id="2）、然后此时仓库有两个分支-newBranch-和-master"><a href="#2）、然后此时仓库有两个分支-newBranch-和-master" class="headerlink" title="2）、然后此时仓库有两个分支 newBranch 和 master ;"></a>2）、然后此时仓库有两个分支 <code>newBranch</code> 和 <code>master</code> ;</h4><p>在当前克隆下来的文件夹里面执行 (需要安装 <code>hexo</code>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<h4 id="3）、在新电脑上-生成-ssh"><a href="#3）、在新电脑上-生成-ssh" class="headerlink" title="3）、在新电脑上 生成 ssh ;"></a>3）、在新电脑上 生成 <code>ssh</code> ;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#39;github账号&#39;</span><br></pre></td></tr></table></figure>
+<p><code>ssh</code> 值在 <code>/用户/当前账户名/.ssh/id_rsa.pub</code> 的文件内</p>
+<h4 id="4）、将值新建到-guhub-的-ssh-keys"><a href="#4）、将值新建到-guhub-的-ssh-keys" class="headerlink" title="4）、将值新建到 guhub 的 ssh keys:"></a>4）、将值新建到 <code>guhub</code> 的 <code>ssh keys</code>:</h4><p>github账户 -&gt; setting -&gt; SSH and GPG keys -&gt; SSH keys -&gt; New SSH key、</p>
+<h4 id="5）、设置本地账户信息"><a href="#5）、设置本地账户信息" class="headerlink" title="5）、设置本地账户信息"></a>5）、设置本地账户信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;yourname&quot;</span><br><span class="line">$ git config --global user.email youeremail@example.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、将-hexo-当前目录下的文件-全部提交到远程库-newBranch"><a href="#6、将-hexo-当前目录下的文件-全部提交到远程库-newBranch" class="headerlink" title="6、将 hexo 当前目录下的文件 全部提交到远程库 newBranch"></a>6、将 hexo 当前目录下的文件 全部提交到远程库 <code>newBranch</code></h2><h4 id="1）、本地预览"><a href="#1）、本地预览" class="headerlink" title="1）、本地预览"></a>1）、本地预览</h4><p>新建博文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &#39;newBlogTitle&#39;</span><br></pre></td></tr></table></figure>
+
+<p>生成静态文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g  &#x2F;&#x2F; 生成文件</span><br></pre></td></tr></table></figure>
+<p>预览静态文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s  &#x2F;&#x2F; 预览静态文件 访问localhost:4000</span><br></pre></td></tr></table></figure>
+
+<h4 id="2）、将修改的文件提交的远程仓库"><a href="#2）、将修改的文件提交的远程仓库" class="headerlink" title="2）、将修改的文件提交的远程仓库"></a>2）、将修改的文件提交的远程仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &#39;提交备注&#39;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h4 id="3）、发布到远程仓库"><a href="#3）、发布到远程仓库" class="headerlink" title="3）、发布到远程仓库"></a>3）、发布到远程仓库</h4><p>执行以下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+<p>此时会将博客的静态文件推送到 <code>master</code> 分支，<br>同时访问 <a href="https://mogugit.github.io/">https://mogugit.github.io/</a> 也就能看到更新的内容</p>
+<h2 id="7、更换电脑之后，只需要将远程仓库的分支克隆下来-在-github-中添加-ssh-就可以了"><a href="#7、更换电脑之后，只需要将远程仓库的分支克隆下来-在-github-中添加-ssh-就可以了" class="headerlink" title="7、更换电脑之后，只需要将远程仓库的分支克隆下来 在 github 中添加 ssh 就可以了"></a>7、更换电脑之后，只需要将远程仓库的分支克隆下来 在 <code>github</code> 中添加 <code>ssh</code> 就可以了</h2><p>每次更新文件只需要执行 步骤 8,9 就好了</p>
+<p>如果代码提交错误 那就回滚代码；<br>首先通过 <code>git log</code> 获取相应的版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+<p>回滚</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 版本号</span><br></pre></td></tr></table></figure>
+<p>从新推送到远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f -u origin 分支名称</span><br></pre></td></tr></table></figure>
+<p>重新更新 代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h2 id="8、博客使用的图片可以使用免费的图床"><a href="#8、博客使用的图片可以使用免费的图床" class="headerlink" title="8、博客使用的图片可以使用免费的图床"></a>8、<a href="https://zhuanlan.zhihu.com/p/35270383" target="_blank" rel="noopener">博客使用的图片可以使用免费的图床</a></h2><p><strong><a href="https://imgchr.com/" target="_blank" rel="noopener">路过图床</a></strong></p>
+<p>  简介：支持免注册上传图片，永久存储，支持HTTPS加密访问和调用图片，提供多种图片链接格式，成立于2011年</p>
+<p>  限制：最大10M<br><strong><a href="https://portal.qiniu.com" target="_blank" rel="noopener">七牛云</a></strong></p>
+<p>简介：注册认证后有10G永久免费空间，每月10G国内和10G国外流量，速度相当快，七牛云是国内专业CDN服务商，插件支持比较多，有免费ssl证书，但https流量收费<br><strong>注意：七牛云30天后会回收测试域名，因此你<code>必须要绑定自己的已备案的域名</code></strong></p>
+<p>图片上传限制：无</p>
+<p><strong><a href="http://sbimg.cn" target="_blank" rel="noopener">公益图床</a></strong></p>
+<p>长期保存需要注册使用，这个图床服务器在国内应该还用了cdn，总之速度非常快</p>
+<p>其他的可以<a href="https://zhuanlan.zhihu.com/p/35270383" target="_blank" rel="noopener">参考这里</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/probelm/" rel="tag"># probelm</a>
+              <a href="/tags/blog/" rel="tag"># blog</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/02/%E5%B7%A5%E4%BD%9Cgit-commit%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83/" rel="prev" title="工作git commit提交规范">
+      <i class="fa fa-chevron-left"></i> 工作git commit提交规范
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/03/24/%E6%88%91%E7%9A%8430%E5%B2%81/" rel="next" title="我的30岁">
+      我的30岁 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-推送失败本地预览没有问题-Deployer-not-found-git"><span class="nav-number">1.</span> <span class="nav-text">1.推送失败本地预览没有问题 Deployer not found: git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-config-yml-文件配置-deploy-说明"><span class="nav-number">2.</span> <span class="nav-text">2、_config.yml 文件配置  deploy 说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、如何解决在多台电脑上提交博客"><span class="nav-number">3.</span> <span class="nav-text">3、如何解决在多台电脑上提交博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）、首先将本地远程库克隆到本地-此时的本地仓库默认指向的是-newBranch"><span class="nav-number">3.0.1.</span> <span class="nav-text">1）、首先将本地远程库克隆到本地 (此时的本地仓库默认指向的是 newBranch)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）、然后此时仓库有两个分支-newBranch-和-master"><span class="nav-number">3.0.2.</span> <span class="nav-text">2）、然后此时仓库有两个分支 newBranch 和 master ;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）、在新电脑上-生成-ssh"><span class="nav-number">3.0.3.</span> <span class="nav-text">3）、在新电脑上 生成 ssh ;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4）、将值新建到-guhub-的-ssh-keys"><span class="nav-number">3.0.4.</span> <span class="nav-text">4）、将值新建到 guhub 的 ssh keys:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5）、设置本地账户信息"><span class="nav-number">3.0.5.</span> <span class="nav-text">5）、设置本地账户信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、将-hexo-当前目录下的文件-全部提交到远程库-newBranch"><span class="nav-number">4.</span> <span class="nav-text">6、将 hexo 当前目录下的文件 全部提交到远程库 newBranch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）、本地预览"><span class="nav-number">4.0.1.</span> <span class="nav-text">1）、本地预览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）、将修改的文件提交的远程仓库"><span class="nav-number">4.0.2.</span> <span class="nav-text">2）、将修改的文件提交的远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）、发布到远程仓库"><span class="nav-number">4.0.3.</span> <span class="nav-text">3）、发布到远程仓库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、更换电脑之后，只需要将远程仓库的分支克隆下来-在-github-中添加-ssh-就可以了"><span class="nav-number">5.</span> <span class="nav-text">7、更换电脑之后，只需要将远程仓库的分支克隆下来 在 github 中添加 ssh 就可以了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、博客使用的图片可以使用免费的图床"><span class="nav-number">6.</span> <span class="nav-text">8、博客使用的图片可以使用免费的图床</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mogugit</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mogugit</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
